@@ -1,0 +1,64 @@
+/* Global Reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variables */
+
+:root {
+  /* Colors */
+
+  --jet-black: #022b3a;
+  --teal: #1f7a8c;
+  --pale-sky: #bfdbf7;
+  --lavender: #e1e5f2;
+  --white: #ffffff;
+
+  /* Fluid Type Scale */
+
+  --step--2: clamp(0.6944rem, 0.3728rem + 1.6085vw, 0.8rem);
+  --step--1: clamp(0.8333rem, 0.3254rem + 2.5397vw, 1rem);
+  --step-0: clamp(1rem, 0.2381rem + 3.8095vw, 1.25rem);
+  --step-1: clamp(1.2rem, 0.0952rem + 5.5238vw, 1.5625rem);
+  --step-2: clamp(1.44rem, -0.1238rem + 7.819vw, 1.9531rem);
+  --step-3: clamp(1.728rem, -0.4462rem + 10.871vw, 2.4414rem);
+  --step-4: clamp(2.0736rem, -0.9075rem + 14.9053vw, 3.0518rem);
+  --step-5: clamp(2.4883rem, -1.554rem + 20.2115vw, 3.8147rem);
+}
+
+/* Body Styling */
+
+#root {
+  height: 100dvh;
+  width: 100dvw;
+}
+
+/* Navbar Styles */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.navbar img {
+  width: 2rem;
+}
+
+.navbar h1 {
+  font-size: var(--step-3);
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.navbar-link {
+  font-size: 1.2rem;
+}
