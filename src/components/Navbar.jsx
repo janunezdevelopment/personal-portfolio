@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import avatar from "../assets/imgs/avatar.jpg";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,10 +12,16 @@ function Navbar() {
   return (
     <header>
       <nav className={`navbar ${isMenuOpen ? "open" : ""}`}>
-        <Link to="/" end>
-          <img className="avatar" src="" alt="Portrait of Javier A. Núñez" />
-        </Link>
-        <h1>Javier A. Núñez</h1>
+        <div className="brand-block">
+          <Link to="/" end>
+            <img
+              className="avatar"
+              src={avatar}
+              alt="Portrait of Javier A. Núñez"
+            />
+          </Link>
+          <h1>Javier A. Núñez</h1>
+        </div>
         <button
           className={`hamburger ${isMenuOpen ? "open" : ""}`}
           onClick={toggleMenu}
