@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: "Inter Variable";
-  src: url("./assets/fonts/Inter/Inter-VariableFont_opsz\,wght.ttf");
+  src: url("./assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf");
   font-weight: 100 900;
   font-style: normal;
 }
@@ -48,6 +48,7 @@
 
   /* Fluid Spacing */
 
+  --space-5xs: clamp(0.0625rem, 0.0402rem + 0.1116vw, 0.0938rem);
   --space-4xs: clamp(0.125rem, 0.0804rem + 0.2232vw, 0.1875rem);
   --space-3xs: clamp(0.25rem, 0.2054rem + 0.2232vw, 0.3125rem);
   --space-2xs: clamp(0.5rem, 0.4107rem + 0.4464vw, 0.625rem);
@@ -71,7 +72,7 @@
   /* Fonts */
 
   --font-inter: "Inter Variable", sans-serif;
-  --font-jb: "";
+  --font-jb: "JerBrains Variable", sans-serif;
 }
 
 /* Body Styling */
@@ -84,12 +85,15 @@
 
 .navbar {
   height: 8svh;
-  width: 94%;
+  width: 93%;
   margin-inline: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: var(--white);
+  font-family: var(--font-inter);
+
+  /* Glass Background */
 }
 
 .brand-block {
@@ -104,7 +108,6 @@
 }
 
 .avatar-link img {
-  height: auto;
   width: 100%;
   display: block;
   border-radius: 50%;
@@ -112,7 +115,8 @@
 
 .navbar h1 {
   text-transform: uppercase;
-  font-size: var(--step-1);
+  font-size: var(--step-01);
+  font-weight: 600;
 }
 
 .hamburger {
@@ -124,8 +128,7 @@
   align-items: center;
   border: none;
   background: none;
-  gap: 0.5rem;
-  cursor: pointer;
+  gap: 0.45rem;
 }
 
 .hamburger .bars {
@@ -137,16 +140,17 @@
   transition: all 0.3s ease-in-out;
 }
 
-.navbar-links {
+.navlinks-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  min-height: 20svh;
+  justify-content: center;
+  gap: var(--space-xl);
+  min-height: 30svh;
   width: 100%;
   position: absolute;
   top: 8svh;
   left: 0;
-  padding: 0 3% 0 0;
+  padding: 0 4% 0 0;
   transition:
     opacity 0.3s ease,
     transform 0.3s ease,
@@ -161,48 +165,114 @@
 }
 
 .navlinks {
+  position: relative;
+  display: inline-block;
   font-size: var(--step-0);
+  font-weight: 400;
+  letter-spacing: var(--space-5xs);
+  color: var(--jet-black);
   text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: var(--space-4xs);
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.navlinks::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.15em;
+  width: 100%;
+  height: 2px;
+  background-color: var(--teal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.navlinks:hover {
+  color: var(--teal);
+}
+
+.navlinks:focus-visible {
+  color: var(--teal);
+  outline: 2px solid var(--teal);
+  outline-offset: var(--space-5xs);
+  border-radius: var(--space-5xs);
+}
+
+.navlinks:active {
+  color: var(--white);
+  background-color: var(--teal);
+  border-radius: var(--space-5xs);
+}
+
+.navlinks.active {
+  color: var(--teal);
+}
+
+.navlinks:hover::after,
+.navlinks:focus-visible::after,
+.navlinks:active::after,
+.navlinks.active::after {
+  transform: scaleX(1);
 }
 
 /* When React state applies the .open class */
-.navbar-links.open {
+.navlinks-container.open {
   transform: translateY(0);
   opacity: 1;
   pointer-events: auto;
 }
 
 /* CSS Animation to turn the burger into an "X" */
-.hamburger.open .bar:nth-child(1) {
+.hamburger.open .bars:nth-child(1) {
   transform: translateY(0.7rem) rotate(45deg);
 }
 
-.hamburger.open .bar:nth-child(2) {
+.hamburger.open .bars:nth-child(2) {
   opacity: 0; /* Fade out middle bar */
 }
 
-.hamburger.open .bar:nth-child(3) {
+.hamburger.open .bars:nth-child(3) {
   transform: translateY(-0.7rem) rotate(-45deg);
 }
 
 /* Home Page */
 
 main {
-  /* display: flex;
-  flex-direction: column; */
+  font-family: var(--font-jb);
+  background-color: var(--teal);
+  color: var(--white);
 }
 
 .hero-div {
   height: 88svh;
+  max-width: 93%;
+  margin: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  gap: var(--space-3xl);
   align-items: center;
   text-align: center;
-  background-color: var(--teal);
-  color: var(--white);
+}
+
+.hero-div h2 {
+  font-size: var(--step-5);
+}
+
+.hero-div p {
+  font-size: var(--step-2);
+}
+
+.hero-div button {
+  height: 10%;
+  width: 93%;
+  font-family: inherit;
+  font-size: var(--step-2);
+  color: var(--jet-black);
 }
 
 .projects-div {
@@ -222,11 +292,11 @@ footer {
   height: 4svh;
 }
 
-@media (min-width: 426px) {
+/* @media (min-width: 426px) {
   .hamburger {
     display: none;
   }
 
   .navbar-links {
   }
-}
+} */

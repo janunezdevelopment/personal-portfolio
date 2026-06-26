@@ -28,7 +28,7 @@ function Navbar() {
           <span className="bars"></span>
           <span className="bars"></span>
         </button>
-        <ul className={`navbar-links ${isMenuOpen ? "open" : ""}`}>
+        <ul className={`navlinks-container ${isMenuOpen ? "open" : ""}`}>
           <li>
             <NavLink className={"navlinks"} to="/" end>
               Home

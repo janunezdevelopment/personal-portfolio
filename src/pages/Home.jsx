@@ -2,7 +2,10 @@ function Home() {
   return (
     <main>
       <div className="hero-div">
-        <h2>Hey, my name is Javier A. Núñez</h2>
+        <h2>
+          Hello! <br />
+          Thank you for visiting my portfolio!
+        </h2>
         <p>
           I am a frontend developer based in Miami, FL, USA. My specialties are
           JavaScript and React JS, and I enjoy building websites and web
