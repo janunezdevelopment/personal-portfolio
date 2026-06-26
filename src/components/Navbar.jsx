@@ -13,12 +13,8 @@ function Navbar() {
     <header>
       <nav className={`navbar ${isMenuOpen ? "open" : ""}`}>
         <div className="brand-block">
-          <Link to="/" end>
-            <img
-              className="avatar"
-              src={avatar}
-              alt="Portrait of Javier A. Núñez"
-            />
+          <Link className="avatar-link" to="/" end>
+            <img src={avatar} alt="Portrait of Javier A. Núñez" />
           </Link>
           <h1>Javier A. Núñez</h1>
         </div>
@@ -28,24 +24,30 @@ function Navbar() {
           aria-label="Toggle navigation"
           aria-expanded={isMenuOpen}
         >
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
+          <span className="bars"></span>
+          <span className="bars"></span>
+          <span className="bars"></span>
         </button>
         <ul className={`navbar-links ${isMenuOpen ? "open" : ""}`}>
           <li>
-            <NavLink to="/" end>
+            <NavLink className={"navlinks"} to="/" end>
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/projects">Projects</NavLink>
+            <NavLink className={"navlinks"} to="/projects">
+              Projects
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/about">About</NavLink>
+            <NavLink className={"navlinks"} to="/about">
+              About
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/contact">Contact</NavLink>
+            <NavLink className={"navlinks"} to="/contact">
+              Contact
+            </NavLink>
           </li>
         </ul>
       </nav>

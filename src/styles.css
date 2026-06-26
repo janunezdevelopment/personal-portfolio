@@ -6,6 +6,22 @@
   box-sizing: border-box;
 }
 
+/* Font Import */
+
+@font-face {
+  font-family: "Inter Variable";
+  src: url("./assets/fonts/Inter/Inter-VariableFont_opsz\,wght.ttf");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./assets/fonts/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf");
+  font-weight: 100 800;
+  font-style: normal;
+}
+
 /* Variables */
 
 :root {
@@ -32,6 +48,7 @@
 
   /* Fluid Spacing */
 
+  --space-4xs: clamp(0.125rem, 0.0804rem + 0.2232vw, 0.1875rem);
   --space-3xs: clamp(0.25rem, 0.2054rem + 0.2232vw, 0.3125rem);
   --space-2xs: clamp(0.5rem, 0.4107rem + 0.4464vw, 0.625rem);
   --space-xs: clamp(0.75rem, 0.6161rem + 0.6696vw, 0.9375rem);
@@ -50,20 +67,24 @@
   --space-l-xl: clamp(2rem, 0.75rem + 6.25vw, 3.75rem);
   --space-xl-2xl: clamp(3rem, 1.5714rem + 7.1429vw, 5rem);
   --space-2xl-3xl: clamp(4rem, 1.5rem + 12.5vw, 7.5rem);
+
+  /* Fonts */
+
+  --font-inter: "Inter Variable", sans-serif;
+  --font-jb: "";
 }
 
 /* Body Styling */
 
 #root {
-  height: 100svh;
-  width: 94%;
-  margin: auto;
+  min-height: 100svh;
 }
 
 /* Navbar Styles */
 
 .navbar {
-  height: 8dvh;
+  height: 8svh;
+  width: 94%;
   margin-inline: auto;
   display: flex;
   justify-content: space-between;
@@ -77,8 +98,15 @@
   gap: var(--space-2xs);
 }
 
-.avatar {
-  width: 2.5rem;
+.avatar-link {
+  width: var(--space-xl);
+  display: inline-block;
+}
+
+.avatar-link img {
+  height: auto;
+  width: 100%;
+  display: block;
   border-radius: 50%;
 }
 
@@ -88,49 +116,67 @@
 }
 
 .hamburger {
-  display: flex; /* Show burger on mobile */
-  cursor: pointer;
-  background: none;
-  border: none;
+  height: var(--space-l);
+  width: var(--space-l);
+  display: flex;
   flex-direction: column;
-  gap: 6px;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: none;
+  gap: 0.5rem;
+  cursor: pointer;
 }
 
-.hamburger .bar {
+.hamburger .bars {
+  width: 100%;
+  height: var(--space-3xs);
   display: block;
-  width: 25px;
-  height: 3px;
   background-color: var(--jet-black);
+  transform-origin: center;
   transition: all 0.3s ease-in-out;
 }
 
 .navbar-links {
-  width: 100%;
-  background-color: #333;
-  position: absolute;
-  top: 60px;
-  right: -100%; /* Hide menu off-screen by default */
-  padding: 2rem 0;
-  transition: 0.3s;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  justify-content: space-around;
+  min-height: 20svh;
+  width: 100%;
+  position: absolute;
+  top: 8svh;
+  left: 0;
+  padding: 0 3% 0 0;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    max-height 0.3s ease;
+  overflow: hidden;
+  text-align: right;
   list-style: none;
-  text-align: center;
+  opacity: 0;
+  /* gap: var(--space-m); */
+  background-color: var(--pale-sky);
+  pointer-events: none;
 }
 
-.navbar-link {
-  font-size: 1.2rem;
+.navlinks {
+  font-size: var(--step-0);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: var(--space-4xs);
 }
 
 /* When React state applies the .open class */
 .navbar-links.open {
-  right: 0; /* Slide menu into view */
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* CSS Animation to turn the burger into an "X" */
 .hamburger.open .bar:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
+  transform: translateY(0.7rem) rotate(45deg);
 }
 
 .hamburger.open .bar:nth-child(2) {
@@ -138,7 +184,7 @@
 }
 
 .hamburger.open .bar:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
+  transform: translateY(-0.7rem) rotate(-45deg);
 }
 
 /* Home Page */
@@ -154,9 +200,20 @@ main {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  text-align: center;
   background-color: var(--teal);
   color: var(--white);
+}
+
+.projects-div {
+  height: 88svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   text-align: center;
+  background-color: var(--teal);
+  color: var(--white);
 }
 
 /* Footer */
