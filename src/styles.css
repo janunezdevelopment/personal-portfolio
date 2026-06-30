@@ -92,24 +92,24 @@ body {
   background:
     radial-gradient(
       circle at 12% 18%,
-      rgb(255 255 255 / 0.38),
+      rgb(255 255 255 / 0.32),
       transparent 42%
     ),
     radial-gradient(
       circle at 88% 12%,
-      rgb(191 219 247 / 0.42),
+      rgb(191 219 247 / 0.36),
       transparent 40%
     ),
     radial-gradient(
       circle at 50% 100%,
-      rgb(225 229 242 / 0.28),
+      rgb(225 229 242 / 0.24),
       transparent 46%
     ),
     linear-gradient(
       140deg,
-      rgb(2 43 58 / 0.9),
-      rgb(31 122 140 / 0.78) 48%,
-      rgb(225 229 242 / 0.7)
+      rgb(2 43 58 / 0.93),
+      rgb(31 122 140 / 0.82) 48%,
+      rgb(225 229 242 / 0.66)
     );
   background-attachment: fixed;
 }
@@ -201,7 +201,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  min-height: 32svh;
+  min-height: 35svh;
   width: 100%;
   position: absolute;
   top: 8.5svh;
@@ -323,8 +323,8 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: var(--space-3xl);
   align-items: center;
+  gap: var(--space-3xl);
   text-align: center;
   text-shadow: var(--text-shadow-hero);
 }
@@ -338,12 +338,53 @@ main {
   text-shadow: var(--text-shadow-hero);
 }
 
-.hero-div button {
-  height: 10%;
-  width: 93%;
+.projects-btn {
+  height: var(--space-2xl);
+  width: min(93%, 20rem);
+  border: 1px solid rgb(255 255 255 / 0.4);
+  border-radius: var(--border-radius);
   font-family: inherit;
-  font-size: var(--step-2);
-  color: var(--jet-black);
+  font-size: var(--step-1);
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  text-transform: uppercase;
+  background: linear-gradient(
+    135deg,
+    rgb(31 122 140 / 0.9),
+    rgb(2 43 58 / 0.88)
+  );
+  box-shadow:
+    0 8px 20px rgb(2 43 58 / 0.28),
+    0 1px 0 rgb(255 255 255 / 0.2) inset;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.projects-btn:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(
+    135deg,
+    rgb(31 122 140 / 0.98),
+    rgb(2 43 58 / 0.95)
+  );
+  box-shadow:
+    0 10px 24px rgb(2 43 58 / 0.32),
+    0 1px 0 rgb(255 255 255 / 0.24) inset;
+}
+
+.projects-btn:active {
+  transform: translateY(0);
+  box-shadow:
+    0 5px 14px rgb(2 43 58 / 0.26),
+    0 1px 0 rgb(255 255 255 / 0.18) inset;
+}
+
+.projects-btn:focus-visible {
+  outline: 2px solid var(--pale-sky);
+  outline-offset: 2px;
 }
 
 .projects-div {

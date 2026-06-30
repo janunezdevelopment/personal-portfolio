@@ -1,4 +1,30 @@
+import { useEffect, useRef, useState } from "react";
+
 function Home() {
+  const [showProjects, setShowProjects] = useState(false);
+  const projectsRef = useRef(null);
+
+  useEffect(() => {
+    if (showProjects && projectsRef.current) {
+      projectsRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [showProjects]);
+
+  const loadProjects = () => {
+    if (projectsRef.current) {
+      projectsRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      return;
+    }
+
+    setShowProjects(true);
+  };
+
   return (
     <main>
       <div className="hero-div">
@@ -11,8 +37,15 @@ function Home() {
           JavaScript and React JS, and I enjoy building websites and web
           applications.
         </p>
-        <button className="projects-btn">See my projects</button>
+        <button className="projects-btn" onClick={loadProjects}>
+          See my projects
+        </button>
       </div>
+      {showProjects && (
+        <div className="projects-div" ref={projectsRef}>
+          Projects
+        </div>
+      )}
     </main>
   );
 }
