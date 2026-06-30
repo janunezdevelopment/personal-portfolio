@@ -34,6 +34,11 @@
   --pale-sky: #bfdbf7;
   --lavender: #e1e5f2;
   --white: #ffffff;
+  --text-shadow-letterpress:
+    0 1px 1px rgb(255 255 255 / 0.35), 0 1px 2px rgb(2 43 58 / 0.12);
+  --text-shadow-glow:
+    0 0 3px rgb(255 255 255 / 0.3), 0 0 10px rgb(191 219 247 / 0.2);
+  --text-shadow-hero: 0 1px 2px rgb(2 43 58 / 0.5);
 
   /* Fluid Type Scale */
 
@@ -68,6 +73,7 @@
   --space-l-xl: clamp(2rem, 0.75rem + 6.25vw, 3.75rem);
   --space-xl-2xl: clamp(3rem, 1.5714rem + 7.1429vw, 5rem);
   --space-2xl-3xl: clamp(4rem, 1.5rem + 12.5vw, 7.5rem);
+  --hamburger-gap: 0.45rem;
 
   /* Fonts */
 
@@ -117,12 +123,14 @@ body {
 .navbar {
   position: relative;
   height: 8svh;
-  width: 93%;
+  width: 93svw;
   margin-inline: auto;
+  padding: 0 1svw;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-family: var(--font-inter);
+  text-shadow: var(--text-shadow-glow);
 
   /* Glass Background */
 }
@@ -132,7 +140,7 @@ body {
   position: absolute;
   left: calc((100vw - 100%) / -2);
   right: calc((100vw - 100%) / -2);
-  bottom: calc(var(--space-5xs) * -2);
+  bottom: calc(var(--space-3xs) * -2);
   height: calc(var(--space-2xs) + var(--space-4xs));
   background: linear-gradient(
     90deg,
@@ -176,7 +184,7 @@ body {
   align-items: center;
   border: none;
   background: none;
-  gap: 0.45rem;
+  gap: var(--hamburger-gap);
 }
 
 .hamburger .bars {
@@ -198,7 +206,7 @@ body {
   position: absolute;
   top: 8svh;
   left: 0;
-  padding: 0 4% 0 0;
+  padding: 0 2svw 0 0;
   transition:
     opacity 0.3s ease,
     transform 0.3s ease,
@@ -207,6 +215,7 @@ body {
   text-align: right;
   list-style: none;
   opacity: 0;
+  transform: translateY(-0.25rem);
   /* gap: var(--space-m); */
   background: linear-gradient(
     155deg,
@@ -216,6 +225,7 @@ body {
   -webkit-backdrop-filter: blur(12px) saturate(130%);
   backdrop-filter: blur(12px) saturate(130%);
   border: 1px solid rgb(255 255 255 / 0.24);
+  border-radius: 4px;
   box-shadow: 0 10px 30px rgb(2 43 58 / 0.14);
   pointer-events: none;
 }
@@ -232,6 +242,7 @@ body {
   transition:
     color 0.2s ease,
     background-color 0.2s ease;
+  text-shadow: var(--text-shadow-letterpress);
 }
 
 .navlinks::after {
@@ -284,7 +295,8 @@ body {
 
 /* CSS Animation to turn the burger into an "X" */
 .hamburger.open .bars:nth-child(1) {
-  transform: translateY(0.7rem) rotate(45deg);
+  transform: translateY(calc(var(--space-3xs) + var(--hamburger-gap)))
+    rotate(45deg);
 }
 
 .hamburger.open .bars:nth-child(2) {
@@ -292,7 +304,8 @@ body {
 }
 
 .hamburger.open .bars:nth-child(3) {
-  transform: translateY(-0.7rem) rotate(-45deg);
+  transform: translateY(calc((var(--space-3xs) + var(--hamburger-gap)) * -1))
+    rotate(-45deg);
 }
 
 /* Home Page */
@@ -313,6 +326,7 @@ main {
   gap: var(--space-3xl);
   align-items: center;
   text-align: center;
+  text-shadow: var(--text-shadow-hero);
 }
 
 .hero-div h2 {
@@ -321,6 +335,7 @@ main {
 
 .hero-div p {
   font-size: var(--step-2);
+  text-shadow: var(--text-shadow-hero);
 }
 
 .hero-div button {
