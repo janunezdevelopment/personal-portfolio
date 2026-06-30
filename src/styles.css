@@ -199,8 +199,7 @@ body {
 .navlinks-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: var(--space-xl);
+  justify-content: space-around;
   min-height: 32svh;
   width: 100%;
   position: absolute;
