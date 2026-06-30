@@ -4,9 +4,24 @@ import avatar from "../assets/imgs/avatar.jpg";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [focusedLink, setFocusedLink] = useState(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const getNavLinkClassName = (path, isActive) => {
+    const classes = ["navlinks"];
+
+    if (isActive) {
+      classes.push("active");
+    }
+
+    if (focusedLink === path) {
+      classes.push("outlined-text");
+    }
+
+    return classes.join(" ");
   };
 
   return (
@@ -30,22 +45,49 @@ function Navbar() {
         </button>
         <ul className={`navlinks-container ${isMenuOpen ? "open" : ""}`}>
           <li>
-            <NavLink className={"navlinks"} to="/" end>
+            <NavLink
+              className={({ isActive }) => getNavLinkClassName("/", isActive)}
+              to="/"
+              end
+              onFocus={() => setFocusedLink("/")}
+              onBlur={() => setFocusedLink(null)}
+            >
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink className={"navlinks"} to="/projects">
+            <NavLink
+              className={({ isActive }) =>
+                getNavLinkClassName("/projects", isActive)
+              }
+              to="/projects"
+              onFocus={() => setFocusedLink("/projects")}
+              onBlur={() => setFocusedLink(null)}
+            >
               Projects
             </NavLink>
           </li>
           <li>
-            <NavLink className={"navlinks"} to="/about">
+            <NavLink
+              className={({ isActive }) =>
+                getNavLinkClassName("/about", isActive)
+              }
+              to="/about"
+              onFocus={() => setFocusedLink("/about")}
+              onBlur={() => setFocusedLink(null)}
+            >
               About
             </NavLink>
           </li>
           <li>
-            <NavLink className={"navlinks"} to="/contact">
+            <NavLink
+              className={({ isActive }) =>
+                getNavLinkClassName("/contact", isActive)
+              }
+              to="/contact"
+              onFocus={() => setFocusedLink("/contact")}
+              onBlur={() => setFocusedLink(null)}
+            >
               Contact
             </NavLink>
           </li>

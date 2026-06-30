@@ -34,10 +34,14 @@
   --pale-sky: #bfdbf7;
   --lavender: #e1e5f2;
   --white: #ffffff;
+
+  /* Border & Shading */
+
+  --border-radius: 4px;
   --text-shadow-letterpress:
     0 1px 1px rgb(255 255 255 / 0.35), 0 1px 2px rgb(2 43 58 / 0.12);
   --text-shadow-glow:
-    0 0 3px rgb(255 255 255 / 0.3), 0 0 10px rgb(191 219 247 / 0.2);
+    0 0 3px rgb(255 255 255 / 0.4), 0 0 10px rgb(191 219 247 / 0.2);
   --text-shadow-hero: 0 1px 2px rgb(2 43 58 / 0.5);
 
   /* Fluid Type Scale */
@@ -83,12 +87,8 @@
 
 /* Body Styling */
 
-html,
 body {
-  min-height: 100%;
-}
-
-body {
+  padding: 0 var(--space-2xs);
   background:
     radial-gradient(
       circle at 12% 18%,
@@ -123,14 +123,11 @@ body {
 .navbar {
   position: relative;
   height: 8svh;
-  width: 93svw;
   margin-inline: auto;
-  padding: 0 1svw;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-family: var(--font-inter);
-  text-shadow: var(--text-shadow-glow);
 
   /* Glass Background */
 }
@@ -139,9 +136,9 @@ body {
   content: "";
   position: absolute;
   left: calc((100vw - 100%) / -2);
+  top: 8.5svh;
   right: calc((100vw - 100%) / -2);
-  bottom: calc(var(--space-3xs) * -2);
-  height: calc(var(--space-2xs) + var(--space-4xs));
+  height: calc(var(--space-3xs) * 1.5);
   background: linear-gradient(
     90deg,
     rgb(255 255 255 / 0),
@@ -167,12 +164,16 @@ body {
   width: 100%;
   display: block;
   border-radius: 50%;
+  box-shadow:
+    0 4px 10px rgb(2 43 58 / 0.22),
+    0 1px 2px rgb(255 255 255 / 0.35) inset;
 }
 
 .navbar h1 {
   text-transform: uppercase;
   font-size: var(--step-01);
   font-weight: 600;
+  text-shadow: var(--text-shadow-glow);
 }
 
 .hamburger {
@@ -203,9 +204,8 @@ body {
   min-height: 32svh;
   width: 100%;
   position: absolute;
-  top: 8svh;
+  top: 8.5svh;
   left: 0;
-  padding: 0 2svw 0 0;
   transition:
     opacity 0.3s ease,
     transform 0.1s ease,
@@ -224,9 +224,14 @@ body {
   -webkit-backdrop-filter: blur(12px) saturate(130%);
   backdrop-filter: blur(12px) saturate(130%);
   border: 1px solid rgb(255 255 255 / 0.24);
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   box-shadow: 0 10px 30px rgb(2 43 58 / 0.14);
   pointer-events: none;
+}
+
+.navbar,
+.navlinks-container {
+  padding: 0 var(--space-3xs);
 }
 
 .navlinks {
@@ -238,10 +243,10 @@ body {
   color: var(--jet-black);
   text-decoration: none;
   text-transform: uppercase;
+  text-shadow: var(--text-shadow-letterpress);
   transition:
     color 0.2s ease,
     background-color 0.2s ease;
-  text-shadow: var(--text-shadow-letterpress);
 }
 
 .navlinks::after {
@@ -254,27 +259,25 @@ body {
   background-color: var(--teal);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.25s ease;
-}
-
-.navlinks:hover {
-  color: var(--teal);
+  transition: transform 0.35s ease;
 }
 
 .navlinks:focus-visible {
+  font-weight: 600;
   color: var(--teal);
-  outline: 2px solid var(--teal);
-  outline-offset: var(--space-5xs);
-  border-radius: var(--space-5xs);
+  outline: none;
+  border-radius: var(--border-radius);
+  -webkit-text-stroke: 1px var(--jet-black);
 }
 
 .navlinks:active {
   color: var(--white);
   background-color: var(--teal);
-  border-radius: var(--space-5xs);
+  border-radius: var(--border-radius);
 }
 
 .navlinks.active {
+  font-weight: 600;
   color: var(--teal);
 }
 
@@ -285,7 +288,6 @@ body {
   transform: scaleX(1);
 }
 
-/* When React state applies the .open class */
 .navlinks-container.open {
   transform: translateY(0);
   opacity: 1;
@@ -317,7 +319,6 @@ main {
 
 .hero-div {
   height: 88svh;
-  max-width: 93%;
   margin: auto;
   display: flex;
   flex-direction: column;
