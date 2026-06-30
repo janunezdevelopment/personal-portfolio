@@ -209,7 +209,7 @@ body {
   padding: 0 2svw 0 0;
   transition:
     opacity 0.3s ease,
-    transform 0.3s ease,
+    transform 0.1s ease,
     max-height 0.3s ease;
   overflow: hidden;
   text-align: right;
