@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Home() {
   const [showProjects, setShowProjects] = useState(false);
@@ -13,7 +14,9 @@ function Home() {
     }
   }, [showProjects]);
 
-  const loadProjects = () => {
+  const loadProjects = (event) => {
+    event.preventDefault();
+
     if (projectsRef.current) {
       projectsRef.current.scrollIntoView({
         behavior: "smooth",
@@ -37,13 +40,13 @@ function Home() {
           JavaScript and React JS, and I enjoy building websites and web
           applications.
         </p>
-        <button className="projects-btn" onClick={loadProjects}>
+        <Link className="projects-btn" to="#projects" onClick={loadProjects}>
           See my projects
-        </button>
+        </Link>
       </div>
       {showProjects && (
-        <div className="projects-div" ref={projectsRef}>
-          Projects
+        <div className="projects-div" id="projects" ref={projectsRef}>
+          <h1>Projects</h1>
         </div>
       )}
     </main>
