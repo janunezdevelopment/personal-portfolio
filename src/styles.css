@@ -79,6 +79,7 @@
   --space-l-xl: clamp(2rem, 0.75rem + 6.25vw, 3.75rem);
   --space-xl-2xl: clamp(3rem, 1.5714rem + 7.1429vw, 5rem);
   --space-2xl-3xl: clamp(4rem, 1.5rem + 12.5vw, 7.5rem);
+  --navbar-height: 9svh;
   --hamburger-gap: 0.45rem;
 
   /* Fonts */
@@ -106,7 +107,7 @@ body {
   position: fixed;
   top: 0;
   z-index: 1;
-  height: 8svh;
+  height: var(--navbar-height);
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -118,19 +119,15 @@ body {
   /* Glass Background */
 }
 
-.brand-block {
+.avatar-link {
   display: flex;
   align-items: center;
-  gap: var(--space-2xs);
-}
-
-.avatar-link {
-  width: var(--space-xl);
-  display: inline-block;
+  gap: var(--space-xs);
+  text-decoration: none;
 }
 
 .avatar-link img {
-  width: 100%;
+  max-height: 7svh;
   display: block;
   border-radius: 50%;
   box-shadow:
@@ -169,14 +166,16 @@ body {
 }
 
 .navlinks-container {
+  margin-right: 1svw;
+  padding-right: calc(var(--space-xs) - 1svw);
+  width: 39svw;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   min-height: 35svh;
-  width: 100%;
   position: absolute;
-  top: 8svh;
-  left: 0;
+  top: var(--navbar-height);
+  right: 0;
   transition:
     opacity 0.3s ease,
     transform 0.1s ease,
@@ -194,14 +193,15 @@ body {
   );
   -webkit-backdrop-filter: blur(12px) saturate(130%);
   backdrop-filter: blur(12px) saturate(130%);
-  border: 1px solid rgb(234 243 246 / 0.2);
   border-radius: var(--border-radius);
-  box-shadow: 0 14px 30px rgb(12 29 39 / 0.2);
+  box-shadow:
+    0 0 0 1px rgb(12 29 39 / 0.34),
+    0 14px 34px rgb(12 29 39 / 0.46),
+    0 2px 2px rgb(255 255 255 / 0.2) inset;
   pointer-events: none;
 }
 
 .navbar,
-.navlinks-container,
 .hero-div {
   padding: 0 var(--space-xs);
 }
@@ -290,11 +290,11 @@ main {
   font-family: var(--font-jb);
   background-color: transparent;
   color: var(--white);
-  padding-top: 8svh;
+  padding-top: var(--navbar-height);
 }
 
 .hero-div {
-  min-height: calc(100svh - 8svh);
+  min-height: calc(100svh - 13svh);
   padding-bottom: 4svh;
   overflow: hidden;
   display: flex;
@@ -316,8 +316,7 @@ main {
 }
 
 .projects-btn {
-  height: var(--space-2xl);
-  width: min(93%, 20rem);
+  padding: var(--space-l) var(--space-xl);
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -379,7 +378,7 @@ main {
 }
 
 .projects-div {
-  height: 88svh;
+  height: calc(100svh - 13svh);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -403,11 +402,11 @@ footer {
   color: var(--white);
 }
 
-/* @media (min-width: 426px) {
+@media (min-width: 768px) {
   .hamburger {
     display: none;
   }
 
   .navbar-links {
   }
-} */
+}

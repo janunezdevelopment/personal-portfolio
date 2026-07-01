@@ -27,12 +27,10 @@ function Navbar() {
   return (
     <header>
       <nav className={`navbar ${isMenuOpen ? "open" : ""}`}>
-        <div className="brand-block">
-          <Link className="avatar-link" to="/" end>
-            <img src={avatar} alt="Portrait of Javier A. Núñez" />
-          </Link>
+        <Link className="avatar-link" to="/" end>
+          <img src={avatar} alt="Portrait of Javier A. Núñez" />
           <h1>Javier A. Núñez</h1>
-        </div>
+        </Link>
         <button
           className={`hamburger ${isMenuOpen ? "open" : ""}`}
           onClick={toggleMenu}
