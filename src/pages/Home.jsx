@@ -9,7 +9,10 @@ function Home() {
     event.preventDefault();
     setShowProjects(true);
     window.requestAnimationFrame(() => {
-      projectsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      projectsRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     });
   };
 
