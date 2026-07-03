@@ -80,6 +80,7 @@
   --space-xl-2xl: clamp(3rem, 1.5714rem + 7.1429vw, 5rem);
   --space-2xl-3xl: clamp(4rem, 1.5rem + 12.5vw, 7.5rem);
   --navbar-height: 9svh;
+  --footer-height: 6svh;
   --hamburger-gap: 0.45rem;
 
   /* Fonts */
@@ -172,7 +173,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  min-height: 35svh;
+  height: 35svh;
   position: absolute;
   top: var(--navbar-height);
   right: 0;
@@ -287,15 +288,14 @@ body {
 /* Home Page */
 
 main {
-  font-family: var(--font-jb);
   background-color: transparent;
+  font-family: var(--font-jb);
   color: var(--white);
   padding-top: var(--navbar-height);
 }
 
 .hero-div {
-  min-height: calc(100svh - 13svh);
-  padding-bottom: 4svh;
+  height: 100svh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -378,21 +378,23 @@ main {
 }
 
 .projects-div {
-  height: calc(100svh - 13svh);
+  height: 100svh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  gap: var(--space-2xl);
   text-align: center;
-  background-color: transparent;
-  color: var(--white);
+  text-shadow: var(--text-shadow-hero);
 }
 
 /* Footer */
 
 footer {
+  border: var(--test-border);
   position: fixed;
-  height: 4svh;
+  height: var(--navbar-height);
   width: 100%;
   bottom: 0;
   z-index: 1;
@@ -405,8 +407,5 @@ footer {
 @media (min-width: 768px) {
   .hamburger {
     display: none;
-  }
-
-  .navbar-links {
   }
 }

@@ -5,27 +5,12 @@ function Home() {
   const [showProjects, setShowProjects] = useState(false);
   const projectsRef = useRef(null);
 
-  useEffect(() => {
-    if (showProjects && projectsRef.current) {
-      projectsRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  }, [showProjects]);
-
   const loadProjects = (event) => {
     event.preventDefault();
-
-    if (projectsRef.current) {
-      projectsRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-      return;
-    }
-
     setShowProjects(true);
+    window.requestAnimationFrame(() => {
+      projectsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   };
 
   return (
