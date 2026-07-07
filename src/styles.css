@@ -411,16 +411,17 @@ main p {
 
 .projects-page {
   max-height: calc(100svh - calc(var(--navfoot-height) * 2));
-  padding: calc(var(--navfoot-height) * 1.5) var(--space-xs);
+  padding: calc(var(--navfoot-height) * 1) var(--space-xs);
   overflow: scroll;
   gap: var(--space-m);
   justify-content: space-between;
 }
 
-
+.project-title {
+  font-size: var(--step-3);
+}
 
 .project-container {
-  height: 60svh;
   display: flex;
   align-items: center;
   justify-content: center;
