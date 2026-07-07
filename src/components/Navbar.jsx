@@ -2,6 +2,13 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import avatar from "../assets/imgs/avatar.jpg";
 
+const navItems = [
+  { path: "/", label: "Home", end: true },
+  { path: "/projects", label: "Projects" },
+  { path: "/about", label: "About" },
+  { path: "/contact", label: "Contact" },
+];
+
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [focusedLink, setFocusedLink] = useState(null);
@@ -24,6 +31,10 @@ function Navbar() {
     return classes.join(" ");
   };
 
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header>
       <nav className={`navbar ${isMenuOpen ? "open" : ""}`}>
@@ -42,62 +53,30 @@ function Navbar() {
           <span className="bars"></span>
         </button>
         <ul className={`navlinks-container ${isMenuOpen ? "open" : ""}`}>
-          <div className="navlink-container">
-            <li>
-              <NavLink
-                className={({ isActive }) => getNavLinkClassName("/", isActive)}
-                to="/"
-                end
-                onFocus={() => setFocusedLink("/")}
-                onBlur={() => setFocusedLink(null)}
-              >
-                Home
-              </NavLink>
-            </li>
-          </div>
-          <div className="navlink-container">
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  getNavLinkClassName("/projects", isActive)
-                }
-                to="/projects"
-                onFocus={() => setFocusedLink("/projects")}
-                onBlur={() => setFocusedLink(null)}
-              >
-                Projects
-              </NavLink>
-            </li>
-          </div>
-
-          <div className="navlink-container">
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  getNavLinkClassName("/about", isActive)
-                }
-                to="/about"
-                onFocus={() => setFocusedLink("/about")}
-                onBlur={() => setFocusedLink(null)}
-              >
-                About
-              </NavLink>
-            </li>
-          </div>
-          <div className="navlink-container">
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  getNavLinkClassName("/contact", isActive)
-                }
-                to="/contact"
-                onFocus={() => setFocusedLink("/contact")}
-                onBlur={() => setFocusedLink(null)}
-              >
-                Contact
-              </NavLink>
-            </li>
-          </div>
+          {navItems.map((item, index) => (
+            <div
+              key={index}
+              to={item.path}
+              id={`navlink-${index}`}
+              className="navlink-container"
+              end={item.end}
+            >
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    getNavLinkClassName(item.path, isActive)
+                  }
+                  to={item.path}
+                  end={item.end}
+                  onFocus={() => setFocusedLink(item.path)}
+                  onBlur={() => setFocusedLink(null)}
+                  onClick={handleLinkClick}
+                >
+                  {item.label}
+                </NavLink>
+              </li>
+            </div>
+          ))}
         </ul>
       </nav>
     </header>

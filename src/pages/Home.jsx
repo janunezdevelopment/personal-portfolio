@@ -18,20 +18,19 @@ function Home() {
 
   return (
     <main>
-      <div className="hero-div">
-        <h2>
-          Hello! <br />
-          Thank you for visiting my portfolio!
-        </h2>
-        <p>
-          I am a frontend developer based in Miami, FL, USA. My specialties are
-          JavaScript and React JS, and I enjoy building websites and web
-          applications.
-        </p>
-        <Link className="projects-btn" to="#projects" onClick={loadProjects}>
-          See my projects
-        </Link>
-      </div>
+      <h2 className="heading">
+        Hello! <br />
+        Thank you for visiting my portfolio!
+      </h2>
+      <hr className="divider" />
+      <p>
+        I am a frontend developer based in Miami, FL, USA. My specialties are
+        JavaScript and React JS, and I enjoy building websites and web
+        applications.
+      </p>
+      <Link className="projects-btn" to="#projects" onClick={loadProjects}>
+        See my projects
+      </Link>
       {showProjects && (
         <div className="projects-div" id="projects" ref={projectsRef}>
           <h1>Projects</h1>
