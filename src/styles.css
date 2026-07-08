@@ -416,10 +416,32 @@ main p {
 }
 
 .project-title {
-  font-size: var(--step-3);
   position: relative;
   display: inline-block;
-  padding-bottom: var(--space-2xs);
+  margin-top: var(--space-2xs);
+  padding: var(--space-2xs) var(--space-s);
+  font-family: var(--font-inter);
+  font-size: clamp(1.55rem, 5.8vw, 2.1rem);
+  font-weight: 780;
+  line-height: 1.1;
+  letter-spacing: 0.015em;
+  color: var(--white);
+  text-shadow:
+    0 2px 6px rgb(12 29 39 / 0.5),
+    0 0 14px rgb(134 191 206 / 0.24);
+  background: linear-gradient(
+    145deg,
+    rgb(12 29 39 / 0.56),
+    rgb(21 116 135 / 0.28)
+  );
+  border: 1px solid rgb(234 243 246 / 0.22);
+  border-radius: 5px;
+  box-shadow:
+    0 0 0 1px rgb(12 29 39 / 0.24),
+    0 10px 24px rgb(12 29 39 / 0.34),
+    0 1px 1px rgb(255 255 255 / 0.16) inset;
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  backdrop-filter: blur(6px) saturate(120%);
 }
 
 .project-container {
@@ -443,21 +465,24 @@ main p {
   display: inline;
 }
 
-.project-title {
-  height: 4svh;
-}
-
-.project-title::after {
+/* .project-title::after {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: var(--space-4xs);
+  left: 50%;
+  bottom: calc(var(--space-3xs) * -1);
+  transform: translateX(-50%);
+  width: calc(100% - var(--space-m));
+  height: var(--space-3xs);
   border-radius: 999px;
-  background: linear-gradient(90deg, #69b7ff, #2e8fff);
-  box-shadow: 0 0 10px rgb(46 143 255 / 0.45);
-}
+  background: linear-gradient(
+    90deg,
+    rgb(134 191 206 / 0.15),
+    rgb(134 191 206 / 0.9),
+    rgb(21 116 135 / 0.88),
+    rgb(134 191 206 / 0.15)
+  );
+  box-shadow: 0 0 12px rgb(134 191 206 / 0.45);
+} */
 
 .project-description {
   margin-bottom: 0;
