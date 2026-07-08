@@ -2,20 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 function Home() {
-  const [showProjects, setShowProjects] = useState(false);
-  const projectsRef = useRef(null);
-
-  const loadProjects = (event) => {
-    event.preventDefault();
-    setShowProjects(true);
-    window.requestAnimationFrame(() => {
-      projectsRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    });
-  };
-
   return (
     <main>
       <h2 className="heading">
@@ -28,14 +14,9 @@ function Home() {
         JavaScript and React JS, and I enjoy building websites and web
         applications.
       </p>
-      <Link className="projects-btn" to="#projects" onClick={loadProjects}>
+      <Link className="projects-btn" to="/projects">
         See my projects
       </Link>
-      {showProjects && (
-        <div className="projects-div" id="projects" ref={projectsRef}>
-          <h1>Projects</h1>
-        </div>
-      )}
     </main>
   );
 }
