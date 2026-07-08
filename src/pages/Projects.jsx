@@ -10,32 +10,52 @@ function Projects() {
     {
       title: "Quizzical",
       screenshots: [quizzicalScreenshot1, quizzicalScreenshot2],
+      links: {
+        live: "https://quiz3000.netlify.app/",
+        code: "https://github.com/janunezdevelopment/quiz-project",
+      },
       description:
         "Quizzical is a fun quiz application that allows users to test their technological knowledge. It features multiple-choice questions and a scoring system to track progress.",
     },
     {
       title: "Unit Conversion",
       screenshots: [conversionScreenshot1, conversionScreenshot2],
+      links: {
+        live: "https://unit-conversion-app.netlify.app/",
+        code: "https://github.com/janunezdevelopment/unit-conversion-project",
+      },
       description:
-        "Conversion is a utility application that allows users to convert between different units of measurement. It supports various unit types and provides accurate conversion results.",
+        "This is a utility application that allows users to convert between different units of measurement. It supports various unit types and provides accurate conversion results.",
     },
     {
       title: "Password Generator",
       screenshots: [passwordGenScreenshot1, passwordGenScreenshot2],
+      links: {
+        live: "https://password-generator-app.netlify.app/",
+        code: "https://github.com/janunezdevelopment/password-generator-project",
+      },
       description:
-        "Password Generator is a utility application that allows users to generate passwords. It provides options for password length to ensure strong passwords.",
+        "This is a utility application that allows users to generate passwords. It provides options for password length to ensure strong passwords.",
     },
   ];
 
   const projectElements = projects.map((project, index) => (
     <div className="project-container" key={index}>
-      <h2 className="project-title">{project.title}</h2>
       <div className="project-screenshots-container">
         {project.screenshots.map((screenshot, i) => (
           <img src={screenshot} alt={`Project screenshot ${i + 1}`} key={i} />
         ))}
       </div>
+      <h2 className="project-title">{project.title}</h2>
       <p className="project-description">{project.description}</p>
+      <div className="project-links">
+        <a className="project-link-btn" href={project.links.live}>
+          View Live Project
+        </a>
+        <a className="project-link-btn" href={project.links.code}>
+          View Project Code
+        </a>
+      </div>
     </div>
   ));
   return (
