@@ -431,7 +431,7 @@ main p {
   min-height: calc(100dvh - calc(var(--navfoot-height) * 2));
   max-height: calc(100dvh - calc(var(--navfoot-height) * 2));
   display: grid;
-  grid-template-rows: 2.5fr 0.25fr 0.9fr 0.75fr;
+  grid-template-rows: 2fr 0.25fr 0.9fr 0.75fr;
 }
 
 .project-screenshots-container {
@@ -443,7 +443,7 @@ main p {
 }
 
 .project-container img {
-  width: 40%;
+  width: 37%;
   display: inline;
 }
 
