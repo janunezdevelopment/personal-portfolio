@@ -325,7 +325,7 @@ main {
   align-items: center;
   text-align: center;
   overflow-y: auto;
-  gap: var(--space-xl);
+  gap: var(--space-l);
   background-color: transparent;
   font-family: var(--font-jb);
   color: var(--white);
@@ -563,7 +563,6 @@ main p {
 
 footer {
   height: var(--navfoot-height);
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
