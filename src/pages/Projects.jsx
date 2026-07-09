@@ -21,8 +21,8 @@ function Projects() {
       title: "Unit Conversion",
       screenshots: [conversionScreenshot1, conversionScreenshot2],
       links: {
-        live: "https://unit-conversion-app.netlify.app/",
-        code: "https://github.com/janunezdevelopment/unit-conversion-project",
+        live: "https://unit-conversion-app-1.netlify.app/",
+        code: "https://github.com/janunezdevelopment/unit-conversion-react-app",
       },
       description:
         "This is a utility application that allows users to convert between different units of measurement. It supports various unit types and provides accurate conversion results.",
@@ -31,8 +31,8 @@ function Projects() {
       title: "Password Generator",
       screenshots: [passwordGenScreenshot1, passwordGenScreenshot2],
       links: {
-        live: "https://password-generator-app.netlify.app/",
-        code: "https://github.com/janunezdevelopment/password-generator-project",
+        live: "https://password-generator-jn.netlify.app/",
+        code: "https://github.com/janunezdevelopment/Password-Generator",
       },
       description:
         "This is a utility application that allows users to generate passwords. It provides options for password length to ensure strong passwords.",

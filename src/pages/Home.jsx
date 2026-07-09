@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Home() {
   return (
-    <main>
+    <main className="content-container">
       <h2 className="heading">
         Hello! <br />
         Thank you for visiting my portfolio!

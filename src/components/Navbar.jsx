@@ -38,7 +38,7 @@ function Navbar() {
   return (
     <header>
       <nav className={`navbar ${isMenuOpen ? "open" : ""}`}>
-        <Link className="avatar-link" to="/" end>
+        <Link className="avatar-link" to="/">
           <img src={avatar} alt="Portrait of Javier A. Núñez" />
           <h1>Javier A. Núñez</h1>
         </Link>
@@ -53,29 +53,25 @@ function Navbar() {
           <span className="bars"></span>
         </button>
         <ul className={`navlinks-container ${isMenuOpen ? "open" : ""}`}>
-          {navItems.map((item, index) => (
-            <div
-              key={index}
-              to={item.path}
-              id={`navlink-${index}`}
+          {navItems.map((item) => (
+            <li
+              key={item.path}
+              id={`navlink-${item.label.toLowerCase()}`}
               className="navlink-container"
-              end={item.end}
             >
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    getNavLinkClassName(item.path, isActive)
-                  }
-                  to={item.path}
-                  end={item.end}
-                  onFocus={() => setFocusedLink(item.path)}
-                  onBlur={() => setFocusedLink(null)}
-                  onClick={handleLinkClick}
-                >
-                  {item.label}
-                </NavLink>
-              </li>
-            </div>
+              <NavLink
+                className={({ isActive }) =>
+                  getNavLinkClassName(item.path, isActive)
+                }
+                to={item.path}
+                end={item.end}
+                onFocus={() => setFocusedLink(item.path)}
+                onBlur={() => setFocusedLink(null)}
+                onClick={handleLinkClick}
+              >
+                {item.label}
+              </NavLink>
+            </li>
           ))}
         </ul>
       </nav>

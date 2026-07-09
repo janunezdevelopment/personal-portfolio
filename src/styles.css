@@ -6,6 +6,12 @@
   box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+}
+
 /* Font Import */
 
 @font-face {
@@ -90,8 +96,11 @@
 
 /* Body Styling */
 
-body {
-  min-height: 100dvh;
+.app-container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100dvh;
+  width: 100vw;
   background:
     linear-gradient(rgb(0 0 0 / 0.3), rgb(0 0 0 / 0.3)),
     url("./assets/imgs/portfolio-background.jpg");
@@ -101,6 +110,11 @@ body {
   background-repeat: no-repeat;
 }
 
+.page-container {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .navbar,
 .hero-div,
 main {
@@ -108,9 +122,6 @@ main {
 }
 
 .navbar {
-  position: fixed;
-  top: 0;
-  z-index: 1;
   height: var(--navfoot-height);
   width: 100%;
   display: flex;
@@ -227,7 +238,7 @@ main {
   content: none;
 }
 
-.navlink-container li {
+.navlink-container {
   padding-right: var(--space-xs);
 }
 
@@ -307,13 +318,13 @@ main {
 }
 
 main {
-  height: 100dvh;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  overflow: hidden;
+  overflow-y: auto;
   gap: var(--space-xl);
   background-color: transparent;
   font-family: var(--font-jb);
@@ -411,33 +422,16 @@ main p {
 
 .projects-page {
   justify-content: space-between;
-  overflow: scroll;
+  overflow-y: auto;
   gap: 0;
 }
 
-.project-title {
-  position: relative;
-  display: inline-block;
-  margin-top: var(--space-2xs);
-  padding: var(--space-2xs) var(--space-s);
-  font-family: var(--font-inter);
-  font-size: clamp(1.55rem, 5.8vw, 2.1rem);
-  font-weight: 780;
-  line-height: 1.1;
-  letter-spacing: 0.015em;
-  color: var(--white);
-  text-shadow:
-    0 2px 6px rgb(12 29 39 / 0.5),
-    0 0 14px rgb(134 191 206 / 0.24);
-}
-
 .project-container {
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-m);
+  height: calc(100dvh - calc(var(--navfoot-height) * 2));
+  min-height: calc(100dvh - calc(var(--navfoot-height) * 2));
+  max-height: calc(100dvh - calc(var(--navfoot-height) * 2));
+  display: grid;
+  grid-template-rows: 2.2fr 0.25fr 0.9fr 0.75fr;
 }
 
 .project-screenshots-container {
@@ -449,15 +443,28 @@ main p {
 }
 
 .project-container img {
-  width: 35%;
+  width: 40%;
   display: inline;
+}
+
+.project-title {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-inter);
+  font-size: clamp(1.55rem, 5.8vw, 2.1rem);
+  font-weight: 780;
+  line-height: 1.1;
+  letter-spacing: 0.015em;
+  color: var(--white);
+  text-shadow:
+    0 2px 6px rgb(12 29 39 / 0.5),
+    0 0 14px rgb(134 191 206 / 0.24);
 }
 
 .project-title::after {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: calc(var(--space-3xs) * -1);
   bottom: 0;
   transform: translateX(-50%);
   width: calc(100% - var(--space-s));
@@ -478,15 +485,18 @@ main p {
 }
 
 .project-description {
-  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: var(--step-1);
 }
 
 .project-links {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: var(--space-xs);
+  gap: var(--space-2xs);
 }
 
 .project-link-btn {
@@ -552,11 +562,8 @@ main p {
 }
 
 footer {
-  position: fixed;
   height: var(--navfoot-height);
   width: 100%;
-  bottom: 0;
-  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -590,5 +597,34 @@ footer h3 {
 @media (min-width: 768px) {
   .hamburger {
     display: none;
+  }
+
+  .navlinks-container {
+    position: static;
+    height: auto;
+    width: auto;
+    opacity: 1;
+    transform: none;
+    overflow: visible;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-m);
+    text-align: left;
+    background: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-radius: 0;
+    box-shadow: none;
+    pointer-events: auto;
+  }
+
+  .navlink-container {
+    height: auto;
+    padding-right: 0;
+  }
+
+  .navlink-container::after {
+    content: none;
   }
 }
