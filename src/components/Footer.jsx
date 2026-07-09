@@ -29,6 +29,11 @@ function Footer() {
           ))}
         </ul>
       </nav>
+      <p className="copyright">
+        &copy; 2026 Javier A. Núñez.
+        <br />
+        All rights reserved.
+      </p>
     </footer>
   );
 }

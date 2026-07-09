@@ -431,7 +431,7 @@ main p {
   min-height: calc(100dvh - calc(var(--navfoot-height) * 2));
   max-height: calc(100dvh - calc(var(--navfoot-height) * 2));
   display: grid;
-  grid-template-rows: 2.2fr 0.25fr 0.9fr 0.75fr;
+  grid-template-rows: 2.5fr 0.25fr 0.9fr 0.75fr;
 }
 
 .project-screenshots-container {
@@ -591,6 +591,11 @@ footer h3 {
 .social-links-container img {
   max-height: 4dvh;
   display: block;
+}
+
+.copyright {
+  text-align: center;
+  font-size: var(--step--1);
 }
 
 @media (min-width: 768px) {
