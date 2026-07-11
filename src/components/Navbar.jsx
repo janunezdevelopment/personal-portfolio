@@ -39,7 +39,11 @@ function Navbar() {
     <header>
       <nav className={`navbar ${isMenuOpen ? "open" : ""}`}>
         <Link className="avatar-link" to="/">
-          <img src={avatar} alt="Portrait of Javier A. Núñez" className="avatar-image" />
+          <img
+            src={avatar}
+            alt="Portrait of Javier A. Núñez"
+            className="avatar-image"
+          />
           <h1 className="avatar-name">Javier A. Núñez</h1>
         </Link>
         <button

@@ -320,7 +320,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   text-align: center;
   overflow-y: auto;
   font-family: var(--font-jb);
