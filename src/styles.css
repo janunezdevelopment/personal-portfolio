@@ -316,7 +316,7 @@ footer {
 main {
   grid-row: 2;
   max-height: calc(100dvh - calc(var(--navfoot-height) * 2));
-  padding-block: var(--space-2xl);
+  padding-block: var(--space-xl);
   display: flex;
   flex-direction: column;
   align-items: center;
