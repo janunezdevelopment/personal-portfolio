@@ -5,63 +5,85 @@ import conversionScreenshot2 from "../assets/imgs/conversion-screenshot-2.png";
 import passwordGenScreenshot1 from "../assets/imgs/password-gen-screenshot-1.png";
 import passwordGenScreenshot2 from "../assets/imgs/password-gen-screenshot-2.png";
 
-function Projects() {
-  const projects = [
-    {
-      title: "Quizzical",
-      screenshots: [quizzicalScreenshot1, quizzicalScreenshot2],
-      links: {
-        live: "https://quiz3000.netlify.app/",
-        code: "https://github.com/janunezdevelopment/quiz-project",
+const projects = [
+  {
+    title: "Quizzical",
+    screenshots: [quizzicalScreenshot1, quizzicalScreenshot2],
+    links: [
+      {
+        href: "https://quiz3000.netlify.app/",
+        label: "View Live Project",
       },
-      description:
-        "Quizzical is a fun quiz application that allows users to test their technological knowledge. It features multiple-choice questions and a scoring system to track progress.",
-    },
-    {
-      title: "Unit Conversion",
-      screenshots: [conversionScreenshot1, conversionScreenshot2],
-      links: {
-        live: "https://unit-conversion-app-1.netlify.app/",
-        code: "https://github.com/janunezdevelopment/unit-conversion-react-app",
+      {
+        href: "https://github.com/janunezdevelopment/quiz-project",
+        label: "View Project Code",
       },
-      description:
-        "This is a utility application that allows users to convert between different units of measurement. It supports various unit types and provides accurate conversion results.",
-    },
-    {
-      title: "Password Generator",
-      screenshots: [passwordGenScreenshot1, passwordGenScreenshot2],
-      links: {
-        live: "https://password-generator-jn.netlify.app/",
-        code: "https://github.com/janunezdevelopment/Password-Generator",
+    ],
+    description:
+      "Quizzical is a fun quiz application that allows users to test their technological knowledge. It features multiple-choice questions and a scoring system to track progress.",
+  },
+  {
+    title: "Unit Conversion",
+    screenshots: [conversionScreenshot1, conversionScreenshot2],
+    links: [
+      {
+        href: "https://unit-conversion-app-1.netlify.app/",
+        label: "View Live Project",
       },
-      description:
-        "This is a utility application that allows users to generate passwords. It provides options for password length to ensure strong passwords.",
-    },
-  ];
+      {
+        href: "https://github.com/janunezdevelopment/unit-conversion-react-app",
+        label: "View Project Code",
+      },
+    ],
+    description:
+      "This is a utility application that allows users to convert between different units of measurement. It supports various unit types and provides accurate conversion results.",
+  },
+  {
+    title: "Password Generator",
+    screenshots: [passwordGenScreenshot1, passwordGenScreenshot2],
+    links: [
+      {
+        href: "https://password-generator-jn.netlify.app/",
+        label: "View Live Project",
+      },
+      {
+        href: "https://github.com/janunezdevelopment/Password-Generator",
+        label: "View Project Code",
+      },
+    ],
+    description:
+      "This is a utility application that allows users to generate passwords. It provides options for password length to ensure strong passwords.",
+  },
+];
 
-  const projectElements = projects.map((project, index) => (
-    <div className="project-container" key={index}>
+function Projects() {
+  const projectItems = projects.map((project) => (
+    <div className="project-container" key={project.title}>
       <div className="project-screenshots-container">
-        {project.screenshots.map((screenshot, i) => (
-          <img src={screenshot} alt={`Project screenshot ${i + 1}`} key={i} />
+        {project.screenshots.map((screenshot, index) => (
+          <img
+            src={screenshot}
+            alt={`Project screenshot ${index + 1}`}
+            key={screenshot}
+          />
         ))}
       </div>
       <h2 className="project-title">{project.title}</h2>
       <p className="project-description">{project.description}</p>
       <div className="project-links">
-        <a className="project-link-btn" href={project.links.live}>
-          View Live Project
-        </a>
-        <a className="project-link-btn" href={project.links.code}>
-          View Project Code
-        </a>
+        {project.links.map((link) => (
+          <a className="project-link-btn" href={link.href} key={link.label}>
+            {link.label}
+          </a>
+        ))}
       </div>
     </div>
   ));
+
   return (
     <main className="projects-page">
       <hr className="divider" />
-      {projectElements}
+      {projectItems}
     </main>
   );
 }

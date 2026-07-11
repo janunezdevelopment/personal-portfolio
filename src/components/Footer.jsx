@@ -21,8 +21,8 @@ function Footer() {
         <h3>Socials</h3>
         <nav>
           <ul className="social-links-container">
-            {socialLinks.map((link, index) => (
-              <li key={index}>
+            {socialLinks.map((link) => (
+              <li key={link.label}>
                 <a href={link.href} target="_blank" rel="noopener noreferrer">
                   <img src={link.src} alt={link.label} />
                 </a>
