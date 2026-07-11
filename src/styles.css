@@ -316,7 +316,7 @@ footer {
 main {
   grid-row: 2;
   max-height: calc(100dvh - calc(var(--navfoot-height) * 2));
-  padding-block: var(--space-l);
+  padding-block: var(--space-2xl);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -330,7 +330,7 @@ main {
 
 main .heading {
   margin: 0;
-  font-size: var(--step-4);
+  font-size: var(--step-3);
 }
 
 main .divider {
@@ -352,7 +352,7 @@ main .divider {
 
 main p {
   margin: 0;
-  font-size: var(--step-2);
+  font-size: var(--step-1);
 }
 
 /* Shared button base */
@@ -410,9 +410,10 @@ main p {
   outline-offset: 2px;
 }
 
-/* Button size variants */
+/* Button variants */
+
 .projects-btn {
-  padding: var(--space-l) var(--space-xl);
+  padding: var(--space-m) var(--space-xl);
   font-size: var(--step-1);
   box-shadow:
     0 0 0 1px rgb(12 29 39 / 0.34),
@@ -545,7 +546,7 @@ footer {
 
 footer .social-section-container h3 {
   position: relative;
-  font-size: var(--step-3);
+  font-size: var(--step-2);
   margin: 0;
 }
 
