@@ -93,7 +93,7 @@ body,
   --space-l-xl: clamp(2rem, 0.75rem + 6.25vw, 3.75rem);
   --space-xl-2xl: clamp(3rem, 1.5714rem + 7.1429vw, 5rem);
   --space-2xl-3xl: clamp(4rem, 1.5rem + 12.5vw, 7.5rem);
-  --navfoot-height: var(--space-2xl);
+  --navfoot-height: 7dvh;
   --main-height: calc(100dvh - calc(var(--navfoot-height) * 2));
   --hamburger-gap: 0.45rem;
 
@@ -145,9 +145,9 @@ footer {
 }
 
 .avatar-link .avatar-image {
-  max-width: 7dvh;
+  max-width: 14%;
   display: block;
-  border-radius: 50%;
+  border-radius: var(--border-radius);
   box-shadow:
     0 6px 14px rgb(12 29 39 / 0.26),
     0 1px 1px rgb(255 255 255 / 0.24) inset;
@@ -162,7 +162,7 @@ footer {
 }
 
 .hamburger {
-  width: var(--space-l);
+  width: var(--space-2xl);
   padding: 0;
   display: flex;
   flex-direction: column;
