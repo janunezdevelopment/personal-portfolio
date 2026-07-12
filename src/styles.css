@@ -94,6 +94,7 @@ body,
   --space-xl-2xl: clamp(3rem, 1.5714rem + 7.1429vw, 5rem);
   --space-2xl-3xl: clamp(4rem, 1.5rem + 12.5vw, 7.5rem);
   --navfoot-height: var(--space-2xl);
+  --main-height: calc(100dvh - calc(var(--navfoot-height) * 2));
   --hamburger-gap: 0.45rem;
 
   /* Fonts */
@@ -107,7 +108,7 @@ body,
 .app-container {
   height: 100dvh;
   display: grid;
-  grid-template-rows: auto calc(100dvh - calc(var(--navfoot-height) * 2)) auto;
+  grid-template-rows: auto  * 2)) auto;
   width: 100dvw;
   background:
     linear-gradient(rgb(0 0 0 / 0.3), rgb(0 0 0 / 0.3)),
@@ -315,7 +316,7 @@ footer {
 
 main {
   grid-row: 2;
-  max-height: calc(100dvh - calc(var(--navfoot-height) * 2));
+  max-height: var(--main-height);
   padding-block: var(--space-xl);
   display: flex;
   flex-direction: column;
@@ -334,6 +335,7 @@ main .heading {
 }
 
 main .divider {
+  margin: 0;
   width: min(42rem, 78vw);
   height: var(--space-4xs);
   border: none;
@@ -435,37 +437,36 @@ main p {
     0 1px 1px rgb(255 255 255 / 0.16) inset;
 }
 
-.projects-page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  justify-content: space-between;
-  overflow-y: auto;
+main.projects-page {
+  padding-block: 0;
 }
 
 .project-container {
-  height: calc(100dvh - calc(var(--navfoot-height) * 2));
-  padding-block: var(--space-xs);
+  min-height: var(--main-height);
+  padding-block: var(--space-s);
   display: grid;
-  grid-template-rows: 0.7fr 0.2fr 0.5fr auto;
+  grid-template-rows: auto 6dvh auto auto;
 }
 
 .project-screenshots-container {
-  width: 100%;
+  grid-row: 1;
   gap: var(--space-l);
 }
 
 .project-container img {
-  width: 30%;
+  width: 33%;
 }
 
 .project-title {
+  grid-row: 2;
   position: relative;
-  display: inline-block;
-  font-family: var(--font-inter);
-  font-size: clamp(1.55rem, 5.8vw, 2.1rem);
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  font-family: var(--font-jb);
+  font-size: var(--step-2);
   font-weight: 780;
-  line-height: 1.1;
   letter-spacing: 0.015em;
   color: var(--white);
   text-shadow:
@@ -477,7 +478,7 @@ main p {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: 0;
+  margin-top: 5dvh;
   transform: translateX(-50%);
   width: calc(100% - var(--space-s));
   height: var(--space-4xs);
@@ -497,10 +498,14 @@ main p {
 }
 
 .project-description {
+  grid-row: 3;
   font-size: var(--step-1);
+  font-weight: 400;
+  line-height: 1.2;
 }
 
 .project-links {
+  grid-row: 4;
   flex-direction: column;
   gap: var(--space-2xs);
 }
