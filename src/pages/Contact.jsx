@@ -11,6 +11,7 @@ function Contact() {
           janunezdevelopment@gmail.com or call me directly at +1 (305) 794-7389.
         </>
       }
+      className="contact-page"
     />
   );
 }

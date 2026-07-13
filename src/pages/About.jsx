@@ -12,6 +12,7 @@ function About() {
           and Styled Components.
         </>
       }
+      className="about-page"
     />
   );
 }

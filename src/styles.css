@@ -71,6 +71,8 @@ body,
 
   /* Fluid Spacing */
 
+  --space-7xs: clamp(0.0156rem, 0.01rem + 0.0279vw, 0.0234rem);
+  --space-6xs: clamp(0.0313rem, 0.0201rem + 0.0558vw, 0.0469rem);
   --space-5xs: clamp(0.0625rem, 0.0402rem + 0.1116vw, 0.0938rem);
   --space-4xs: clamp(0.125rem, 0.0804rem + 0.2232vw, 0.1875rem);
   --space-3xs: clamp(0.25rem, 0.2054rem + 0.2232vw, 0.3125rem);
@@ -85,17 +87,34 @@ body,
   --space-4xl: clamp(8rem, 6.5714rem + 7.1429vw, 10rem);
   --space-5xl: clamp(10rem, 8.2143rem + 8.9286vw, 12.5rem);
 
-  --space-3xs-2xs: clamp(0.25rem, -0.0179rem + 1.3393vw, 0.625rem);
+  /* Navbar */
+
+  --navfoot-height-portrait: 8dvh;
+  --navfoot-height-landscape: 12dvh;
+
+  /* Hamburger Button */
+
+  --bar-height: 0.5dvh;
+  --hamburger-gap: 1.1dvh;
+  --translate-distance: calc(var(--bar-height) + var(--hamburger-gap));
+
+  /* Main Area */
+
+  --main-height-portrait: calc(
+    100dvh - calc(var(--navfoot-height-portrait) * 2)
+  );
+  --main-height-landscape: calc(
+    100dvh - calc(var(--navfoot-height-landscape) * 2)
+  );
+
+  /* --space-3xs-2xs: clamp(0.25rem, -0.0179rem + 1.3393vw, 0.625rem);
   --space-2xs-xs: clamp(0.5rem, 0.1875rem + 1.5625vw, 0.9375rem);
   --space-xs-s: clamp(0.75rem, 0.3929rem + 1.7857vw, 1.25rem);
   --space-s-m: clamp(1rem, 0.375rem + 3.125vw, 1.875rem);
   --space-m-l: clamp(1.5rem, 0.7857rem + 3.5714vw, 2.5rem);
   --space-l-xl: clamp(2rem, 0.75rem + 6.25vw, 3.75rem);
   --space-xl-2xl: clamp(3rem, 1.5714rem + 7.1429vw, 5rem);
-  --space-2xl-3xl: clamp(4rem, 1.5rem + 12.5vw, 7.5rem);
-  --navfoot-height: 7dvh;
-  --main-height: calc(100dvh - calc(var(--navfoot-height) * 2));
-  --hamburger-gap: 0.45rem;
+  --space-2xl-3xl: clamp(4rem, 1.5rem + 12.5vw, 7.5rem); */
 
   /* Fonts */
 
@@ -108,7 +127,7 @@ body,
 .app-container {
   height: 100dvh;
   display: grid;
-  grid-template-rows: auto var(--main-height) auto;
+  grid-template-rows: auto var(--main-height-portrait) auto;
   width: 100dvw;
   background:
     linear-gradient(rgb(0 0 0 / 0.3), rgb(0 0 0 / 0.3)),
@@ -127,7 +146,7 @@ footer {
 
 .navbar {
   grid-row: 1;
-  height: var(--navfoot-height);
+  height: var(--navfoot-height-portrait);
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -137,23 +156,29 @@ footer {
   font-family: var(--font-inter);
 }
 
+.avatar-link,
+.avatar-image {
+  max-height: calc(var(--navfoot-height-portrait) - 1dvh);
+}
+
 .avatar-link {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: var(--space-xs);
   text-decoration: none;
 }
 
-.avatar-link .avatar-image {
-  max-width: 14%;
-  display: block;
+.avatar-image {
+  max-width: 11vw;
+  object-fit: cover;
   border-radius: var(--border-radius);
   box-shadow:
     0 6px 14px rgb(12 29 39 / 0.26),
     0 1px 1px rgb(255 255 255 / 0.24) inset;
 }
 
-.navbar .avatar-name {
+.avatar-name {
   font-size: var(--step-0);
   font-weight: 500;
   color: var(--white);
@@ -162,34 +187,49 @@ footer {
 }
 
 .hamburger {
-  width: var(--space-2xl);
+  height: 8dvh;
+  width: 8vw;
   padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: none;
-  background: none;
   gap: var(--hamburger-gap);
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-.hamburger .bars {
+.bars {
   width: 100%;
-  height: var(--space-3xs);
+  height: var(--bar-height);
   display: block;
   background-color: var(--white);
   transform-origin: center;
   transition: all 0.3s ease-in-out;
 }
 
+/* CSS Animation to turn the burger into an "X" */
+.hamburger.open .bars:nth-child(1) {
+  transform: translateY(var(--translate-distance)) rotate(45deg);
+}
+
+.hamburger.open .bars:nth-child(2) {
+  opacity: 0; /* Fade out middle bar */
+}
+
+.hamburger.open .bars:nth-child(3) {
+  transform: translateY(calc(var(--translate-distance) * -1)) rotate(-45deg);
+}
+
 .navlinks-container {
   position: absolute;
-  top: var(--navfoot-height);
+  top: var(--navfoot-height-portrait);
   right: 0;
   margin: 0;
   padding: 0;
   height: 35dvh;
-  width: 35svw;
+  width: var(--space-4xl);
   opacity: 0;
   transition:
     opacity 0.3s ease,
@@ -232,7 +272,7 @@ footer {
   right: var(--space-xs);
   bottom: 0;
   width: calc(100% - (var(--space-xs) * 2));
-  height: var(--space-5xs);
+  height: 0.3dvh;
   background: rgb(234 243 246 / 0.42);
   box-shadow: 0 0 10px rgb(234 243 246 / 0.32);
   filter: blur(1.5px);
@@ -260,9 +300,9 @@ footer {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -0.15em;
+  bottom: -0.2em;
   width: 100%;
-  height: var(--space-4xs);
+  height: 0.3dvh;
   background-color: var(--pale-sky);
   transform: scaleX(0);
   transform-origin: left;
@@ -299,29 +339,14 @@ footer {
   pointer-events: auto;
 }
 
-/* CSS Animation to turn the burger into an "X" */
-.hamburger.open .bars:nth-child(1) {
-  transform: translateY(calc(var(--space-3xs) + var(--hamburger-gap)))
-    rotate(45deg);
-}
-
-.hamburger.open .bars:nth-child(2) {
-  opacity: 0; /* Fade out middle bar */
-}
-
-.hamburger.open .bars:nth-child(3) {
-  transform: translateY(calc((var(--space-3xs) + var(--hamburger-gap)) * -1))
-    rotate(-45deg);
-}
-
 main {
   grid-row: 2;
-  max-height: var(--main-height);
-  padding-block: var(--space-xl);
+  max-height: var(--main-height-portrait);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 6dvh;
   text-align: center;
   overflow-y: auto;
   font-family: var(--font-jb);
@@ -337,7 +362,7 @@ main .heading {
 main .divider {
   margin: 0;
   width: min(42rem, 78vw);
-  height: var(--space-4xs);
+  height: 0.4dvh;
   border: none;
   border-radius: 999px;
   background: linear-gradient(
@@ -366,7 +391,7 @@ main p {
   border-radius: var(--border-radius);
   font-family: inherit;
   font-weight: 650;
-  letter-spacing: 0.02em;
+  letter-spacing: var(--space-5xs);
   color: var(--white);
   text-decoration: none;
   text-transform: uppercase;
@@ -415,7 +440,7 @@ main p {
 /* Button variants */
 
 .projects-btn {
-  padding: var(--space-m) var(--space-xl);
+  padding: 3dvh var(--space-l);
   font-size: var(--step-1);
   box-shadow:
     0 0 0 1px rgb(12 29 39 / 0.34),
@@ -437,13 +462,29 @@ main p {
     0 1px 1px rgb(255 255 255 / 0.16) inset;
 }
 
+main {
+  grid-row: 2;
+  max-height: var(--main-height-portrait);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6dvh;
+  text-align: center;
+  overflow-y: auto;
+  font-family: var(--font-jb);
+  color: var(--white);
+  text-shadow: var(--text-shadow-hero);
+}
+
 main.projects-page {
-  padding-block: 0;
+  justify-content: space-between;
+  gap: 0;
 }
 
 .project-container {
-  min-height: var(--main-height);
-  padding-block: var(--space-s);
+  min-height: var(--main-height-portrait);
+  padding-block: 1.2dvh;
   display: grid;
   grid-template-rows: auto 6dvh auto auto;
 }
@@ -454,7 +495,7 @@ main.projects-page {
 }
 
 .project-container img {
-  width: 33%;
+  width: 30%;
 }
 
 .project-title {
@@ -467,7 +508,7 @@ main.projects-page {
   font-family: var(--font-jb);
   font-size: var(--step-2);
   font-weight: 780;
-  letter-spacing: 0.015em;
+  letter-spacing: var(--space-5xs);
   color: var(--white);
   text-shadow:
     0 2px 6px rgb(12 29 39 / 0.5),
@@ -478,10 +519,10 @@ main.projects-page {
   content: "";
   position: absolute;
   left: 50%;
-  margin-top: 5dvh;
+  margin-top: 6dvh;
   transform: translateX(-50%);
   width: calc(100% - var(--space-s));
-  height: var(--space-4xs);
+  height: 0.3dvh;
   border-radius: 999px;
   background: linear-gradient(
     90deg,
@@ -507,12 +548,12 @@ main.projects-page {
 .project-links {
   grid-row: 4;
   flex-direction: column;
-  gap: var(--space-2xs);
+  gap: 1dvh;
 }
 
 .project-link-btn {
-  padding: var(--space-s) var(--space-l);
-  font-size: var(--step-0);
+  padding: 2dvh var(--space-m);
+  font-size: var(--step--1);
   box-shadow:
     0 0 0 1px rgb(12 29 39 / 0.34),
     0 10px 24px rgb(12 29 39 / 0.38),
@@ -535,7 +576,7 @@ main.projects-page {
 
 footer {
   grid-row: 3;
-  height: var(--navfoot-height);
+  height: var(--navfoot-height-portrait);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -599,7 +640,27 @@ footer .social-section-container h3::after {
   font-size: var(--step--2);
 }
 
-@media (min-width: 768px) {
+/* Landscape Styling */
+
+@media (orientation: landscape) {
+  .app-container {
+    grid-template-rows: auto var(--main-height-landscape) auto;
+  }
+
+  .navbar,
+  footer {
+    height: var(--navfoot-height-landscape);
+  }
+
+  .avatar-link,
+  .avatar-image {
+    max-height: calc(var(--navfoot-height-landscape) - 2dvh);
+  }
+
+  .avatar-name {
+    font-size: calc(var(--step-0) * 0.9);
+  }
+
   .hamburger {
     display: none;
   }
@@ -632,4 +693,84 @@ footer .social-section-container h3::after {
   .navlink-container::after {
     content: none;
   }
+
+  .navlinks {
+    font-size: var(--step--1);
+    letter-spacing: var(--space-6xs);
+  }
+
+  .navlinks::after {
+    
+  }
+
+  main {
+    max-height: var(--main-height-landscape);
+  }
 }
+
+/* Tablet and Desktop Styling */
+
+@media (min-width: 768px) {
+  /* .navlink-container {
+    height: auto;
+    padding-right: 0;
+  } */
+
+  /* .navlink-container::after {
+    content: none;
+  } */
+
+  /* .navlinks {
+    font-size: calc(var(--step--1) * 1.15);
+  } */
+
+  /* main {
+    max-width: 90%;
+    margin-inline: auto;
+    padding-block: 6dvh;
+  } */
+
+  /* main .heading {
+    font-size: var(--step-3);
+  } */
+
+  /* main p {
+    font-size: var(--step-1);
+  } */
+
+  /* footer {
+    justify-content: center;
+    gap: var(--space-xl);
+  } */
+
+  /* .copyright {
+    font-size: var(--step-0);
+  } */
+}
+
+/* Tablet Only Styling */
+
+/* @media screen and (min-width: 768px) and (max-width: 1024px) {
+  main {
+    max-width: 90%;
+    margin-inline: auto;
+    padding-block: 6dvh;
+  }
+
+  main .heading {
+    font-size: var(--step-3);
+  }
+
+  main p {
+    font-size: var(--step-1);
+  }
+
+  footer {
+    justify-content: center;
+    gap: var(--space-xl);
+  }
+
+  .copyright {
+    font-size: var(--step-0);
+  }
+} */

@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import github from "../assets/imgs/github.png";
 import linkedin from "../assets/imgs/linkedin.png";
 
@@ -14,6 +15,22 @@ function Footer() {
       src: linkedin,
     },
   ];
+
+  const [isWide, setIsWide] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+
+    // Set initial state
+    setIsWide(mediaQuery.matches);
+
+    // Listener for changes
+    const handler = (e) => setIsWide(e.matches);
+    mediaQuery.addEventListener("change", handler);
+
+    // Clean up
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, []);
 
   return (
     <footer>
@@ -34,7 +51,7 @@ function Footer() {
 
       <p className="copyright">
         &copy; 2026 Javier A. Núñez.
-        <br />
+        {isWide ? " " : <br />}
         All rights reserved.
       </p>
     </footer>
