@@ -128,7 +128,7 @@ body,
   height: 100dvh;
   display: grid;
   grid-template-rows: auto var(--main-height-portrait) auto;
-  width: 100dvw;
+  width: 100vw;
   background:
     linear-gradient(rgb(0 0 0 / 0.3), rgb(0 0 0 / 0.3)),
     url("./assets/imgs/portfolio-background.jpg");
@@ -640,7 +640,7 @@ footer .social-section-container h3::after {
   font-size: var(--step--2);
 }
 
-/* Landscape Styling */
+/* General Landscape Styling */
 
 @media (orientation: landscape) {
   .app-container {
@@ -700,77 +700,113 @@ footer .social-section-container h3::after {
   }
 
   .navlinks::after {
-    
+    height: 0.5dvh;
   }
 
   main {
     max-height: var(--main-height-landscape);
+    padding-inline: var(--space-l);
+  }
+
+  main .heading {
+    font-size: var(--step-1);
+  }
+
+  main p {
+    font-size: var(--step--1);
+  }
+
+  .projects-btn {
+    padding: 3dvh var(--space-l);
+    font-size: var(--step--1);
+  }
+
+  main.projects-page {
+    padding-inline: var(--space-xs);
+  }
+
+  .project-container {
+    min-height: var(--main-height-landscape);
+    margin-bottom: 10dvh;
+    padding-block: 0dvh;
+    display: grid;
+    grid-template-columns: 0.75fr 1.25fr;
+    grid-template-rows: 1fr 2fr 2fr;
+  }
+
+  .project-screenshots-container {
+    grid-row: 1 / span 3;
+    grid-column: 1;
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xs);
+  }
+
+  .project-container img {
+    width: calc(50% - (var(--space-xs) / 2));
+    min-width: 100%;
+    height: auto;
+    min-width: 0;
+  }
+
+  .project-title {
+    grid-row: 1;
+    grid-column: 2;
+    font-size: var(--step-1);
+    font-weight: 780;
+    letter-spacing: var(--space-6xs);
+  }
+
+  .project-title::after {
+    margin-top: 10dvh;
+  }
+
+  .project-description {
+    grid-row: 2;
+    grid-column: 2;
+    padding-inline: 1vw;
+    font-size: var(--step--1);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .project-links {
+    grid-row: 3;
+    grid-column: 2;
+    flex-direction: column;
+    gap: 1dvh;
+  }
+
+  .project-link-btn {
+    padding: 2dvh var(--space-m);
+    font-size: var(--step--1);
+    box-shadow:
+      0 0 0 1px rgb(12 29 39 / 0.34),
+      0 10px 24px rgb(12 29 39 / 0.38),
+      0 2px 2px rgb(255 255 255 / 0.2) inset;
+  }
+
+  .project-link-btn:hover {
+    box-shadow:
+      0 0 0 1px rgb(12 29 39 / 0.4),
+      0 14px 30px rgb(12 29 39 / 0.44),
+      0 2px 2px rgb(255 255 255 / 0.24) inset;
+  }
+
+  .project-link-btn:active {
+    box-shadow:
+      0 0 0 1px rgb(12 29 39 / 0.3),
+      0 6px 16px rgb(12 29 39 / 0.34),
+      0 1px 1px rgb(255 255 255 / 0.16) inset;
   }
 }
 
 /* Tablet and Desktop Styling */
 
-@media (min-width: 768px) {
-  /* .navlink-container {
-    height: auto;
-    padding-right: 0;
-  } */
-
-  /* .navlink-container::after {
-    content: none;
-  } */
-
-  /* .navlinks {
-    font-size: calc(var(--step--1) * 1.15);
-  } */
-
-  /* main {
-    max-width: 90%;
-    margin-inline: auto;
-    padding-block: 6dvh;
-  } */
-
-  /* main .heading {
-    font-size: var(--step-3);
-  } */
-
-  /* main p {
-    font-size: var(--step-1);
-  } */
-
-  /* footer {
-    justify-content: center;
-    gap: var(--space-xl);
-  } */
-
-  /* .copyright {
-    font-size: var(--step-0);
-  } */
-}
+/* @media (min-width: 768px) {
+} */
 
 /* Tablet Only Styling */
 
 /* @media screen and (min-width: 768px) and (max-width: 1024px) {
-  main {
-    max-width: 90%;
-    margin-inline: auto;
-    padding-block: 6dvh;
-  }
-
-  main .heading {
-    font-size: var(--step-3);
-  }
-
-  main p {
-    font-size: var(--step-1);
-  }
-
-  footer {
-    justify-content: center;
-    gap: var(--space-xl);
-  }
-
-  .copyright {
-    font-size: var(--step-0);
-  }
 } */
