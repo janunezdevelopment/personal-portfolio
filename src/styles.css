@@ -484,6 +484,7 @@ main.projects-page {
 
 .project-container {
   min-height: var(--main-height-portrait);
+  margin-bottom: calc(var(--navfoot-height-portrait) - 1.2dvh);
   padding-block: 1.2dvh;
   display: grid;
   grid-template-rows: auto 6dvh auto auto;
@@ -519,7 +520,7 @@ main.projects-page {
   content: "";
   position: absolute;
   left: 50%;
-  margin-top: 6dvh;
+  margin-top: 5.5dvh;
   transform: translateX(-50%);
   width: calc(100% - var(--space-s));
   height: 0.3dvh;
@@ -590,20 +591,20 @@ footer {
   gap: var(--space-s);
 }
 
-footer .social-section-container h3 {
+.social-section-container h2 {
   position: relative;
-  font-size: var(--step-2);
+  font-size: var(--step-3);
   margin: 0;
 }
 
-footer .social-section-container h3::after {
+.social-section-container h2::after {
   content: "";
   position: absolute;
   top: 50%;
   right: calc(var(--space-s) / -2);
   transform: translate(50%, -50%);
   width: var(--space-4xs);
-  height: 1.6em;
+  height: 100%;
   background: rgb(234 243 246 / 0.6);
   border-radius: 999px;
 }
@@ -727,7 +728,7 @@ footer .social-section-container h3::after {
 
   .project-container {
     min-height: var(--main-height-landscape);
-    margin-bottom: 10dvh;
+    margin-bottom: var(--navfoot-height-landscape);
     padding-block: 0dvh;
     display: grid;
     grid-template-columns: 0.75fr 1.25fr;
@@ -753,7 +754,6 @@ footer .social-section-container h3::after {
     grid-row: 1;
     grid-column: 2;
     font-size: var(--step-1);
-    font-weight: 780;
     letter-spacing: var(--space-6xs);
   }
 
@@ -766,38 +766,43 @@ footer .social-section-container h3::after {
     grid-column: 2;
     padding-inline: 1vw;
     font-size: var(--step--1);
-    font-weight: 400;
-    line-height: 1.2;
   }
 
   .project-links {
     grid-row: 3;
     grid-column: 2;
     flex-direction: column;
-    gap: 1dvh;
+    gap: 2dvh;
   }
 
   .project-link-btn {
-    padding: 2dvh var(--space-m);
     font-size: var(--step--1);
-    box-shadow:
-      0 0 0 1px rgb(12 29 39 / 0.34),
-      0 10px 24px rgb(12 29 39 / 0.38),
-      0 2px 2px rgb(255 255 255 / 0.2) inset;
   }
 
-  .project-link-btn:hover {
-    box-shadow:
-      0 0 0 1px rgb(12 29 39 / 0.4),
-      0 14px 30px rgb(12 29 39 / 0.44),
-      0 2px 2px rgb(255 255 255 / 0.24) inset;
+  .social-section-container h2 {
+    font-size: var(--step-1);
   }
 
-  .project-link-btn:active {
-    box-shadow:
-      0 0 0 1px rgb(12 29 39 / 0.3),
-      0 6px 16px rgb(12 29 39 / 0.34),
-      0 1px 1px rgb(255 255 255 / 0.16) inset;
+  .social-links-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-5xs);
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .social-links-container img {
+    height: 8dvh;
+    height: 8dvh;
+    display: block;
+  }
+
+  .copyright {
+    justify-self: center;
+    text-align: center;
+    font-size: var(--step--2);
   }
 }
 

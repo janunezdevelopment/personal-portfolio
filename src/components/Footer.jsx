@@ -19,7 +19,7 @@ function Footer() {
   const [isWide, setIsWide] = useState(false);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    const mediaQuery = window.matchMedia("(min-width: 667px)");
 
     // Set initial state
     setIsWide(mediaQuery.matches);
@@ -35,7 +35,7 @@ function Footer() {
   return (
     <footer>
       <div className="social-section-container">
-        <h3>Socials</h3>
+        <h2>Socials</h2>
         <nav>
           <ul className="social-links-container">
             {socialLinks.map((link) => (
