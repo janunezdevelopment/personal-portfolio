@@ -86,26 +86,26 @@ body,
   --space-3xl: clamp(6rem, 4.9286rem + 5.3571vw, 7.5rem);
   --space-4xl: clamp(8rem, 6.5714rem + 7.1429vw, 10rem);
   --space-5xl: clamp(10rem, 8.2143rem + 8.9286vw, 12.5rem);
+  --space-6xl: clamp(12rem, 9.8571rem + 10.7143vw, 15rem);
+  --space-7xl: clamp(14rem, 11.5rem + 12.5vw, 17.5rem);
 
-  /* Navbar */
+  --navfoot-height-portrait: var(--space-xl);
+  --navfoot-height-landscape: var(--space-l);
 
-  --navfoot-height-portrait: 8dvh;
-  --navfoot-height-landscape: 12dvh;
-
-  /* Hamburger Button */
-
-  --bar-height: 0.5dvh;
-  --hamburger-gap: 1.1dvh;
+  --bar-height: var(--space-3xs);
+  --hamburger-gap: calc(var(--space-3xs) * 1.5);
   --translate-distance: calc(var(--bar-height) + var(--hamburger-gap));
+
+  --project-container-padding: var(--space-m);
 
   /* Main Area */
 
-  --main-height-portrait: calc(
+  /* --main-height-portrait: calc(
     100dvh - calc(var(--navfoot-height-portrait) * 2)
   );
   --main-height-landscape: calc(
     100dvh - calc(var(--navfoot-height-landscape) * 2)
-  );
+  ); */
 
   /* --space-3xs-2xs: clamp(0.25rem, -0.0179rem + 1.3393vw, 0.625rem);
   --space-2xs-xs: clamp(0.5rem, 0.1875rem + 1.5625vw, 0.9375rem);
@@ -127,7 +127,7 @@ body,
 .app-container {
   height: 100dvh;
   display: grid;
-  grid-template-rows: auto var(--main-height-portrait) auto;
+  grid-template-rows: auto 1fr auto;
   width: 100vw;
   background:
     linear-gradient(rgb(0 0 0 / 0.3), rgb(0 0 0 / 0.3)),
@@ -158,7 +158,7 @@ footer {
 
 .avatar-link,
 .avatar-image {
-  max-height: calc(var(--navfoot-height-portrait) - 1dvh);
+  max-height: calc(var(--navfoot-height-portrait) - var(--space-xs));
 }
 
 .avatar-link {
@@ -187,8 +187,8 @@ footer {
 }
 
 .hamburger {
-  height: 8dvh;
-  width: 8vw;
+  height: var(--space-m);
+  width: calc(var(--space-m) * 1.1);
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -228,7 +228,7 @@ footer {
   right: 0;
   margin: 0;
   padding: 0;
-  height: 35dvh;
+  height: var(--space-7xl);
   width: var(--space-4xl);
   opacity: 0;
   transition:
@@ -259,7 +259,7 @@ footer {
 
 .navlink-container {
   position: relative;
-  height: calc(35dvh / 4);
+  height: calc(var(--space-7xl) / 4);
   display: flex;
   align-items: center;
   justify-content: end;
@@ -272,7 +272,7 @@ footer {
   right: var(--space-xs);
   bottom: 0;
   width: calc(100% - (var(--space-xs) * 2));
-  height: 0.3dvh;
+  height: var(--space-4xs);
   background: rgb(234 243 246 / 0.42);
   box-shadow: 0 0 10px rgb(234 243 246 / 0.32);
   filter: blur(1.5px);
@@ -300,9 +300,9 @@ footer {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -0.2em;
+  bottom: -0.15em;
   width: 100%;
-  height: 0.3dvh;
+  height: var(--space-4xs);
   background-color: var(--pale-sky);
   transform: scaleX(0);
   transform-origin: left;
@@ -341,12 +341,11 @@ footer {
 
 main {
   grid-row: 2;
-  max-height: var(--main-height-portrait);
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6dvh;
   text-align: center;
   overflow-y: auto;
   font-family: var(--font-jb);
@@ -362,7 +361,7 @@ main .heading {
 main .divider {
   margin: 0;
   width: min(42rem, 78vw);
-  height: 0.4dvh;
+  height: var(--space-4xs);
   border: none;
   border-radius: 999px;
   background: linear-gradient(
@@ -440,7 +439,7 @@ main p {
 /* Button variants */
 
 .projects-btn {
-  padding: 3dvh var(--space-l);
+  padding: var(--space-s) var(--space-m);
   font-size: var(--step-1);
   box-shadow:
     0 0 0 1px rgb(12 29 39 / 0.34),
@@ -469,7 +468,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6dvh;
+  gap: var(--space-m);
   text-align: center;
   overflow-y: auto;
   font-family: var(--font-jb);
@@ -483,25 +482,36 @@ main.projects-page {
 }
 
 .project-container {
-  min-height: var(--main-height-portrait);
-  margin-bottom: calc(var(--navfoot-height-portrait) - 1.2dvh);
-  padding-block: 1.2dvh;
+  min-height: 100%;
+  margin-bottom: calc(
+    var(--navfoot-height-portrait) - var(--project-container-padding)
+  );
+  padding-block: var(--project-container-padding);
   display: grid;
-  grid-template-rows: auto 6dvh auto auto;
+  grid-template-rows: repeat(4, auto);
 }
 
 .project-screenshots-container {
   grid-row: 1;
-  gap: var(--space-l);
+  margin: auto;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 .project-container img {
-  width: 30%;
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  max-height: 30dvh;
+  object-fit: contain;
 }
 
 .project-title {
   grid-row: 2;
   position: relative;
+  margin: 0;
+  padding-block: var(--space-2xs);
   display: flex;
   align-items: center;
   text-align: center;
@@ -520,10 +530,10 @@ main.projects-page {
   content: "";
   position: absolute;
   left: 50%;
-  margin-top: 5.5dvh;
+  margin-top: 1.6em;
   transform: translateX(-50%);
   width: calc(100% - var(--space-s));
-  height: 0.3dvh;
+  height: var(--space-4xs);
   border-radius: 999px;
   background: linear-gradient(
     90deg,
@@ -541,6 +551,7 @@ main.projects-page {
 
 .project-description {
   grid-row: 3;
+  padding-block: var(--space-xs);
   font-size: var(--step-0);
   font-weight: 400;
   line-height: 1.2;
@@ -548,12 +559,13 @@ main.projects-page {
 
 .project-links {
   grid-row: 4;
+  padding-block: var(--space-3xs);
   flex-direction: column;
-  gap: 1dvh;
+  gap: var(--space-2xs);
 }
 
 .project-link-btn {
-  padding: 2dvh var(--space-m);
+  padding: var(--space-xs) var(--space-m);
   font-size: var(--step--1);
   box-shadow:
     0 0 0 1px rgb(12 29 39 / 0.34),
@@ -631,7 +643,7 @@ footer {
 }
 
 .social-links-container img {
-  height: 6dvh;
+  height: var(--space-l);
   display: block;
 }
 
@@ -645,7 +657,7 @@ footer {
 
 @media (orientation: landscape) {
   .app-container {
-    grid-template-rows: auto var(--main-height-landscape) auto;
+    grid-template-rows: auto 1fr auto;
   }
 
   .navbar,
@@ -655,7 +667,7 @@ footer {
 
   .avatar-link,
   .avatar-image {
-    max-height: calc(var(--navfoot-height-landscape) - 2dvh);
+    max-height: calc(var(--navfoot-height-landscape) - var(--space-2xs));
   }
 
   .avatar-name {
@@ -700,13 +712,9 @@ footer {
     letter-spacing: var(--space-6xs);
   }
 
-  .navlinks::after {
-    height: 0.5dvh;
-  }
-
   main {
-    max-height: var(--main-height-landscape);
-    padding-inline: var(--space-l);
+    min-height: var(--main-height-landscape);
+    gap: var(--space-s);
   }
 
   main .heading {
@@ -718,7 +726,7 @@ footer {
   }
 
   .projects-btn {
-    padding: 3dvh var(--space-l);
+    padding: var(--space-xs) var(--space-m);
     font-size: var(--step--1);
   }
 
@@ -727,12 +735,11 @@ footer {
   }
 
   .project-container {
-    min-height: var(--main-height-landscape);
+    height: var(--main-height-landscape);
     margin-bottom: var(--navfoot-height-landscape);
     padding-block: 0dvh;
-    display: grid;
-    grid-template-columns: 0.75fr 1.25fr;
-    grid-template-rows: 1fr 2fr 2fr;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(3, auto);
   }
 
   .project-screenshots-container {
@@ -744,10 +751,6 @@ footer {
   }
 
   .project-container img {
-    width: calc(50% - (var(--space-xs) / 2));
-    min-width: 100%;
-    height: auto;
-    min-width: 0;
   }
 
   .project-title {
@@ -757,14 +760,10 @@ footer {
     letter-spacing: var(--space-6xs);
   }
 
-  .project-title::after {
-    margin-top: 10dvh;
-  }
-
   .project-description {
     grid-row: 2;
     grid-column: 2;
-    padding-inline: 1vw;
+    padding-inline: var(--space-2xs);
     font-size: var(--step--1);
   }
 
@@ -776,7 +775,8 @@ footer {
   }
 
   .project-link-btn {
-    font-size: var(--step--1);
+    padding: var(--space-2xs) var(--space-m);
+    font-size: var(--step--2);
   }
 
   .social-section-container h2 {
