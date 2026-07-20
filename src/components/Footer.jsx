@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import github from "../assets/imgs/github.png";
-import linkedin from "../assets/imgs/linkedin.png";
+import github from "../assets/imgs/github.svg";
+import linkedin from "../assets/imgs/linkedin.svg";
 
 function Footer() {
   const socialLinks = [
@@ -8,11 +8,13 @@ function Footer() {
       href: "https://github.com/username",
       label: "GitHub",
       src: github,
+      className: "github-icon",
     },
     {
       href: "https://linkedin.com/in/username",
       label: "LinkedIn",
       src: linkedin,
+      className: "linkedin-icon",
     },
   ];
 
@@ -40,8 +42,17 @@ function Footer() {
           <ul className="social-links-container">
             {socialLinks.map((link) => (
               <li key={link.label}>
-                <a href={link.href} target="_blank" rel="noopener noreferrer">
-                  <img src={link.src} alt={link.label} />
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-links"
+                >
+                  <img
+                    src={link.src}
+                    alt={link.label}
+                    className={link.className}
+                  />
                 </a>
               </li>
             ))}
