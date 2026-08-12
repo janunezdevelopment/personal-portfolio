@@ -470,14 +470,19 @@ main p {
 }
 
 main.projects-page {
-  justify-content: space-between;
+  --project-snap-space: var(--project-card-margin-block);
+  justify-content: flex-start;
   gap: 0;
+  padding-block: 0;
+  scroll-snap-type: y mandatory;
+  scroll-padding-block: 0;
+  overscroll-behavior-y: contain;
 }
 
 .project-container {
-  flex: 0 0 calc(100% - (var(--project-card-margin-block) * 2));
-  min-height: calc(100% - (var(--project-card-margin-block) * 2));
-  margin-block: var(--project-card-margin-block);
+  flex: 0 0 calc(100% - (var(--project-snap-space) * 2));
+  min-height: calc(100% - (var(--project-snap-space) * 2));
+  margin-block: var(--project-snap-space);
   padding: var(--space-xs);
   display: grid;
   grid-template-rows: repeat(4, auto);
@@ -496,6 +501,14 @@ main.projects-page {
     0 22px 42px rgb(12 29 39 / 0.4),
     0 1px 2px rgb(255 255 255 / 0.2) inset;
   overflow: hidden;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+@media screen and (orientation: landscape) {
+  main.projects-page {
+    --project-snap-space: var(--project-card-margin-block-landscape);
+  }
 }
 
 .project-screenshots-container {
@@ -743,13 +756,11 @@ footer {
   }
 
   main.projects-page {
+    --project-snap-space: var(--project-card-margin-block-landscape);
     padding-inline: var(--space-xs);
   }
 
   .project-container {
-    flex-basis: calc(100% - (var(--project-card-margin-block-landscape) * 2));
-    min-height: calc(100% - (var(--project-card-margin-block-landscape) * 2));
-    margin-block: var(--project-card-margin-block-landscape);
     padding: var(--space-xs);
     grid-template-columns: 1.5fr 2.5fr;
     grid-template-rows: repeat(3, auto);
@@ -1020,16 +1031,10 @@ footer {
   }
 
   .project-container {
-    flex: 0 0 calc(100% - (var(--project-card-margin-block) * 2));
-    min-height: calc(100% - (var(--project-card-margin-block) * 2));
-    margin-block: var(--project-card-margin-block);
-  }
-
-  .project-screenshot {
-    max-height: 75dvh;
+    padding-inline: var(--space-3xl);
   }
 
   .project-description {
-    padding-inline: var(--space-2xl);
+    padding-inline: var(--space-xl);
   }
 }
