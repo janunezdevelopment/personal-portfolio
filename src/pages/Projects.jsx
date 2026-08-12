@@ -65,6 +65,7 @@ function Projects() {
             src={screenshot}
             alt={`Project screenshot ${index + 1}`}
             key={screenshot}
+            className="project-screenshot"
           />
         ))}
       </div>
