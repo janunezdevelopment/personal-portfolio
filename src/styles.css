@@ -1030,11 +1030,15 @@ footer {
     overflow: auto;
   }
 
-  .project-container {
-    padding-inline: var(--space-3xl);
-  }
-
   .project-description {
     padding-inline: var(--space-xl);
+  }
+}
+
+/* Large Desktop Styling */
+
+@media screen and (orientation: landscape) and (min-width: 1440px) {
+  .project-container {
+    max-width: 85%;
   }
 }
