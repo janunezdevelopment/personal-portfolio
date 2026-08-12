@@ -20,7 +20,7 @@ const projects = [
       },
     ],
     description:
-      "Quizzical is a fun quiz application that allows users to test their technological knowledge. It features multiple-choice questions and a scoring system to track progress.",
+      "Quizzical is a fun quiz application that allows users to test their technological knowledge. It features multiple-choice questions and a scoring system to track progress. The user can also choose between three difficulty levels to customize their experience.",
   },
   {
     title: "Unit Conversion",
@@ -36,7 +36,7 @@ const projects = [
       },
     ],
     description:
-      "This is a utility application that allows users to convert between different units of measurement. It supports various unit types and provides accurate conversion results.",
+      "This is a utility application that allows users to convert between different units of measurement. It supports various unit types and provides accurate conversion results. Users can save and filter their conversions for future reference.",
   },
   {
     title: "Password Generator",

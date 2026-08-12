@@ -109,14 +109,14 @@ body,
   --translate-distance-large-screens: calc(
     var(--bar-height-large-screens) + var(--hamburger-gap-large-screens)
   );
-  --social-gap: var(--space-s);
-  --social-divider-width: var(--space-4xs);
   --social-gap: var(--space-l);
+  --social-divider-width: var(--space-4xs);
 
   /* Project Page */
 
   --project-card-margin-block: var(--space-xs);
   --project-card-margin-block-landscape: var(--space-2xs);
+  --project-snap-space: var(--project-card-margin-block);
 
   /* Fonts */
 
@@ -470,7 +470,6 @@ main p {
 }
 
 main.projects-page {
-  --project-snap-space: var(--project-card-margin-block);
   justify-content: flex-start;
   gap: 0;
   padding-block: 0;
@@ -506,7 +505,7 @@ main.projects-page {
 }
 
 @media screen and (orientation: landscape) {
-  main.projects-page {
+  :root {
     --project-snap-space: var(--project-card-margin-block-landscape);
   }
 }
@@ -756,7 +755,6 @@ footer {
   }
 
   main.projects-page {
-    --project-snap-space: var(--project-card-margin-block-landscape);
     padding-inline: var(--space-xs);
   }
 
