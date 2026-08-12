@@ -472,14 +472,12 @@ main p {
 main.projects-page {
   justify-content: space-between;
   gap: 0;
-  scroll-snap-type: y mandatory;
 }
 
 .project-container {
   flex: 0 0 calc(100% - (var(--project-card-margin-block) * 2));
   min-height: calc(100% - (var(--project-card-margin-block) * 2));
   margin-block: var(--project-card-margin-block);
-  scroll-snap-align: start;
   padding: var(--space-xs);
   display: grid;
   grid-template-rows: repeat(4, auto);
