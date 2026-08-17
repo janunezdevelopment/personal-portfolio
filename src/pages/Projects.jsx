@@ -69,7 +69,7 @@ function Projects() {
           />
         ))}
       </div>
-      <h2 className="project-title">{project.title}</h2>
+      <h2 className="project-title font-jb">{project.title}</h2>
       <p className="project-description">{project.description}</p>
       <div className="project-links">
         {project.links.map((link) => (
@@ -82,7 +82,7 @@ function Projects() {
   ));
 
   return (
-    <main className="projects-page">
+    <main className="projects-page font-jb">
       <hr className="divider" />
       {projectItems}
     </main>

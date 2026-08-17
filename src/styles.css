@@ -36,6 +36,16 @@ body,
   font-style: normal;
 }
 
+/* Font Utility Classes */
+
+.font-inter {
+  font-family: var(--font-inter);
+}
+
+.font-jb {
+  font-family: var(--font-jb);
+}
+
 /* Variables */
 
 :root {
@@ -159,7 +169,6 @@ footer {
   align-items: center;
   box-shadow: 0 6px 18px rgb(0 0 0 / 0.6);
   background: rgb(0 0 0 / 0.4);
-  font-family: var(--font-inter);
 }
 
 .avatar-link,
@@ -358,7 +367,6 @@ main {
   gap: var(--space-m);
   text-align: center;
   overflow-y: auto;
-  font-family: var(--font-jb);
   color: var(--white);
   text-shadow: var(--text-shadow-hero);
 }
@@ -547,7 +555,6 @@ main.projects-page {
   text-align: center;
   justify-content: center;
   line-height: 1;
-  font-family: var(--font-jb);
   font-size: var(--step-1);
   font-weight: 780;
   letter-spacing: var(--space-5xs);
