@@ -3,7 +3,7 @@ function ContentPage({ title, description, className, children }) {
     <main className={className}>
       <h2 className="heading">{title}</h2>
       <hr className="divider" />
-      <p>{description}</p>
+      <p className="content-description">{description}</p>
       {children}
     </main>
   );

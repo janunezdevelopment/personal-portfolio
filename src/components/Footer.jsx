@@ -8,13 +8,11 @@ function Footer() {
       href: "https://github.com/username",
       label: "GitHub",
       src: github,
-      className: "github-icon",
     },
     {
       href: "https://linkedin.com/in/username",
       label: "LinkedIn",
       src: linkedin,
-      className: "linkedin-icon",
     },
   ];
 
@@ -37,7 +35,7 @@ function Footer() {
   return (
     <footer>
       <div className="social-section-container">
-        <h2>Socials</h2>
+        <h3 className="socials-heading">Socials</h3>
         <nav>
           <ul className="social-links-container">
             {socialLinks.map((link) => (
@@ -51,7 +49,7 @@ function Footer() {
                   <img
                     src={link.src}
                     alt={link.label}
-                    className={link.className}
+                    className="social-icons"
                   />
                 </a>
               </li>

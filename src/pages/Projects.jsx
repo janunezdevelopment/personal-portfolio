@@ -58,7 +58,7 @@ const projects = [
 
 function Projects() {
   const projectItems = projects.map((project) => (
-    <div className="project-container" key={project.title}>
+    <section className="project-container" key={project.title}>
       <div className="project-screenshots-container">
         {project.screenshots.map((screenshot, index) => (
           <img
@@ -78,7 +78,7 @@ function Projects() {
           </a>
         ))}
       </div>
-    </div>
+    </section>
   ));
 
   return (

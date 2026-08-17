@@ -386,7 +386,7 @@ main {
     0 1px 2px rgb(255 255 255 / 0.24) inset;
 }
 
-main p {
+.content-description {
   margin: 0;
   font-size: var(--step-1);
 }
@@ -426,7 +426,7 @@ main p {
 
 .projects-btn:hover,
 .project-link-btn:hover {
-  transform: translateY(-1px);
+  transform: translateY(1px) translateX(1px);
   border-color: rgb(234 243 246 / 0.72);
   background: linear-gradient(
     135deg,
@@ -623,11 +623,11 @@ main.projects-page {
     0 1px 1px rgb(255 255 255 / 0.16) inset;
 }
 
-main.about-page h2 {
+main.about-page .heading {
   font-size: var(--step-1);
 }
 
-main.about-page p {
+main.about-page .content-description {
   font-size: var(--step--1);
 }
 
@@ -649,13 +649,13 @@ footer {
   gap: var(--social-gap);
 }
 
-.social-section-container h2 {
+.socials-heading {
   position: relative;
   font-size: var(--step-3);
   margin: 0;
 }
 
-.social-section-container h2::after {
+.socials-heading::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -680,7 +680,7 @@ footer {
   height: var(--navfoot-height-portrait);
 }
 
-.social-links img {
+.social-icons {
   max-height: 100%;
   width: auto;
   object-fit: contain;
@@ -751,11 +751,11 @@ footer {
     gap: var(--space-s);
   }
 
-  main .heading {
+  .heading {
     font-size: var(--step-1);
   }
 
-  main p {
+  .content-description {
     font-size: var(--step--1);
   }
 
@@ -812,11 +812,11 @@ footer {
     padding-inline: var(--space-l);
   }
 
-  main.about-page h2 {
+  main.about-page .heading {
     font-size: var(--step--0);
   }
 
-  main.about-page p {
+  main.about-page .content-description {
     font-size: var(--step--3);
   }
 
@@ -825,7 +825,7 @@ footer {
     max-height: calc(var(--navfoot-height-landscape) - var(--space-xs));
   }
 
-  .social-section-container h2 {
+  .socials-heading {
     font-size: var(--step-1);
   }
 }
@@ -911,11 +911,11 @@ footer {
     padding-inline: var(--space-2xl);
   }
 
-  main.about-page h2 {
+  main.about-page .heading {
     font-size: var(--step-2);
   }
 
-  main.about-page p {
+  main.about-page .content-description {
     font-size: var(--step-0);
   }
 
@@ -948,11 +948,11 @@ footer {
     padding-inline: var(--space-2xl);
   }
 
-  main.about-page h2 {
+  main.about-page .heading {
     font-size: var(--step-3);
   }
 
-  main.about-page p {
+  main.about-page .content-description {
     font-size: var(--step-1);
   }
 }
@@ -989,11 +989,11 @@ footer {
     padding-inline: var(--space-xl);
   }
 
-  main .heading {
+  .heading {
     font-size: var(--step-3);
   }
 
-  main p {
+  .content-description {
     font-size: var(--step-2);
   }
 
@@ -1029,11 +1029,11 @@ footer {
     padding-inline: var(--space-xl);
   }
 
-  main.about-page h2 {
+  main.about-page .heading {
     font-size: var(--step-2);
   }
 
-  main.about-page p {
+  main.about-page .content-description {
     font-size: var(--step-0);
   }
 
@@ -1044,7 +1044,7 @@ footer {
     );
   }
 
-  .social-section-container h2 {
+  .socials-heading {
     font-size: var(--step-2);
   }
 
@@ -1089,11 +1089,11 @@ footer {
     padding-inline: var(--space-xl);
   }
 
-  main.about-page h2 {
+  main.about-page .heading {
     font-size: var(--step-3);
   }
 
-  main.about-page p {
+  main.about-page .content-description {
     font-size: var(--step-1);
   }
 }
