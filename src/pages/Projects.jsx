@@ -7,7 +7,7 @@ import passwordGenScreenshot2 from "../assets/imgs/password-gen-screenshot-2.png
 
 const projects = [
   {
-    title: "Quizzical",
+    title: "Quiztopia 3000",
     screenshots: [quizzicalScreenshot1, quizzicalScreenshot2],
     links: [
       {
@@ -20,7 +20,7 @@ const projects = [
       },
     ],
     description:
-      "Quizzical is a fun quiz application that allows users to test their technological knowledge. It features multiple-choice questions and a scoring system to track progress. The user can also choose between three difficulty levels to customize their experience.",
+      "Quiztopia 3000 is a fun quiz application that allows users to test their technological knowledge. It features difficulty selection, multiple-choice questions, and a scoring system to track progress.",
   },
   {
     title: "Unit Conversion",

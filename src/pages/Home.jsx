@@ -17,6 +17,7 @@ function Home() {
           applications.
         </>
       }
+      className="home-page"
     >
       <Link className="projects-btn" to="/projects">
         See my projects
