@@ -10,7 +10,7 @@ function Footer() {
       src: github,
     },
     {
-      href: "https://linkedin.com/in/username",
+      href: "https://www.linkedin.com/in/javier-nunez-508821389",
       label: "LinkedIn",
       src: linkedin,
     },

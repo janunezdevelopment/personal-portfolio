@@ -332,7 +332,8 @@ footer {
   -webkit-text-stroke: 0;
 }
 
-.navlinks:hover {
+.navlinks:hover,
+.navlinks:focus {
   color: var(--pale-sky);
   font-weight: 600;
   cursor: pointer;
@@ -364,7 +365,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-m);
+  gap: var(--space-l);
   text-align: center;
   overflow-y: auto;
   color: var(--white);
@@ -658,7 +659,7 @@ footer {
 
 .socials-heading {
   position: relative;
-  font-size: var(--step-3);
+  font-size: var(--step-2);
   margin: 0;
 }
 
@@ -688,8 +689,7 @@ footer {
 }
 
 .social-icons {
-  max-height: 100%;
-  width: auto;
+  max-height: 90%;
   object-fit: contain;
 }
 
@@ -755,6 +755,7 @@ footer {
   }
 
   main {
+    padding-inline: var(--space-2xl);
     gap: var(--space-s);
   }
 
@@ -1115,6 +1116,6 @@ footer {
   main.home-page,
   main.about-page,
   main.contact-page {
-    padding-inline: var(--space-7xl);
+    padding-inline: var(--space-8xl);
   }
 }
