@@ -13,8 +13,8 @@ function Home() {
       description={
         <>
           I am a frontend developer based in Miami, FL, USA. My specialties are
-          JavaScript and React JS, and I enjoy building websites and web
-          applications.
+          JavaScript and React JS, and I enjoy building responsive websites and
+          web applications that are both practical and user-friendly.
         </>
       }
       className="home-page"
