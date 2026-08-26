@@ -9,7 +9,9 @@ function ContentPage({ title, description, photo, className, children }) {
         />
       )}
       <h2 className="heading">{title}</h2>
-      <hr className="divider" />
+      <div className="divider-container">
+        <hr className="divider" />
+      </div>
       <p className="content-description">{description}</p>
       {children}
     </main>

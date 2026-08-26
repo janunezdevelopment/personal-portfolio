@@ -106,26 +106,15 @@ body,
   /* Navbar and Footer Variables */
 
   --navfoot-height-portrait: var(--space-xl);
-  --navfoot-height-portrait-large-screens: var(--space-2xl);
-  --navfoot-height-portrait-exlarge-screens: var(--space-3xl);
-  --navfoot-height-landscape: var(--space-l);
-  --navfoot-height-landscape-large-screens: var(--space-xl);
-  --navfoot-height-landscape-exlarge-screens: calc(var(--space-xl) * 1.1);
   --bar-height: var(--space-3xs);
-  --bar-height-large-screens: var(--space-2xs);
   --hamburger-gap: calc(var(--space-3xs) * 1.5);
-  --hamburger-gap-large-screens: var(--space-2xs);
   --translate-distance: calc(var(--bar-height) + var(--hamburger-gap));
-  --translate-distance-large-screens: calc(
-    var(--bar-height-large-screens) + var(--hamburger-gap-large-screens)
-  );
   --social-gap: var(--space-l);
   --social-divider-width: var(--space-4xs);
 
   /* Project Page */
 
   --project-card-margin-block: var(--space-xs);
-  --project-card-margin-block-landscape: var(--space-2xs);
   --project-snap-space: var(--project-card-margin-block);
 
   /* Fonts */
@@ -374,7 +363,7 @@ main {
 
 .heading {
   margin: 0;
-  font-size: var(--step-3);
+  font-size: var(--step-2);
 }
 
 .divider {
@@ -397,7 +386,7 @@ main {
 
 .content-description {
   margin: 0;
-  font-size: var(--step-1);
+  font-size: var(--step-0);
 }
 
 /* Shared button base */
@@ -712,11 +701,16 @@ footer {
 
 @media screen and (orientation: landscape) {
   :root {
+    --project-card-margin-block-landscape: var(--space-2xs);
     --project-snap-space: var(--project-card-margin-block-landscape);
   }
 }
 
 @media screen and (orientation: landscape) and (min-width: 640px) {
+  :root {
+    --navfoot-height-landscape: var(--space-l);
+  }
+
   .navbar,
   footer {
     height: var(--navfoot-height-landscape);
@@ -771,20 +765,20 @@ footer {
 
   main {
     padding-inline: var(--space-2xl);
-    gap: var(--space-s);
+    gap: var(--space-m);
   }
 
   .heading {
-    font-size: var(--step-1);
+    font-size: var(--step-0);
   }
 
-  .content-description {
-    font-size: var(--step--1);
+  .content-description,
+  .projects-btn {
+    font-size: var(--step--2);
   }
 
   .projects-btn {
     padding: var(--space-xs) var(--space-m);
-    font-size: var(--step--1);
   }
 
   main.projects-page {
@@ -835,6 +829,10 @@ footer {
     padding-inline: var(--space-l);
   }
 
+  main.about-page .avatar-photo {
+    display: none;
+  }
+
   main.about-page .heading {
     font-size: var(--step--0);
   }
@@ -856,6 +854,15 @@ footer {
 /* Tablet Portrait Styling  */
 
 @media screen and (orientation: portrait) and (min-width: 768px) {
+  :root {
+    --navfoot-height-portrait-large-screens: var(--space-2xl);
+    --bar-height-large-screens: var(--space-2xs);
+    --hamburger-gap-large-screens: var(--space-2xs);
+    --translate-distance-large-screens: calc(
+      var(--bar-height-large-screens) + var(--hamburger-gap-large-screens)
+    );
+  }
+
   .navbar,
   footer {
     height: var(--navfoot-height-portrait-large-screens);
@@ -909,16 +916,8 @@ footer {
     padding-block: var(--space-3xs);
   }
 
-  .project-screenshot {
-    max-height: 40dvh;
-  }
-
-  .project-title {
-    font-size: var(--step-2);
-  }
-
   .project-description {
-    font-size: var(--step-1);
+    font-size: var(--step-0);
   }
 
   .project-links {
@@ -931,7 +930,11 @@ footer {
   }
 
   main.about-page {
-    padding-inline: var(--space-2xl);
+    gap: var(--space-m);
+  }
+
+  main.about-page .avatar-photo {
+    width: var(--space-5xl);
   }
 
   main.about-page .heading {
@@ -950,25 +953,74 @@ footer {
 /* Large Tablet Portrait Styling */
 
 @media screen and (orientation: portrait) and (min-width: 1024px) {
-  main {
-    padding-inline: var(--space-2xl);
+  :root {
+    --navfoot-height-portrait-exlarge-screens: var(--space-3xl);
+    --navlinks-container-height-large-portrait: var(--space-10xl);
   }
 
-  .project-title {
+  .navlinks-container {
+    top: var(--navfoot-height-portrait-large-screens);
+    height: var(--navlinks-container-height-large-portrait);
+    width: var(--space-6xl);
+  }
+
+  .navlink-container {
+    height: calc(var(--navlinks-container-height-large-portrait) / 4);
+  }
+
+  .navlinks {
+    position: relative;
+    display: inline-block;
+    font-size: var(--step-1);
+    letter-spacing: var(--space-5xs);
+    color: var(--white);
+    text-decoration: none;
+    text-transform: uppercase;
+    text-shadow: var(--text-shadow-letterpress);
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  main {
+    padding-inline: var(--space-2xl);
+    gap: var(--space-2xl);
+  }
+
+  .heading {
+    margin: 0;
+    font-size: var(--step-4);
+  }
+
+  .content-description {
+    font-size: var(--step-2);
+  }
+
+  .projects-btn {
+    padding: var(--space-m) var(--space-xl);
     font-size: var(--step-3);
   }
 
-  .project-description {
+  .project-title {
     font-size: var(--step-2);
+  }
+
+  .project-description {
+    font-size: var(--step-1);
   }
 
   .project-link-btn {
     padding: var(--space-s) var(--space-xl);
-    font-size: var(--step-1);
+    font-size: var(--step-0);
   }
 
   main.about-page {
     padding-inline: var(--space-2xl);
+    gap: var(--space-l);
+  }
+
+  main.about-page .avatar-photo {
+    width: var(--space-7xl);
   }
 
   main.about-page .heading {
@@ -983,6 +1035,10 @@ footer {
 /* Tablet Landscape Styling */
 
 @media screen and (orientation: landscape) and (min-width: 1024px) {
+  :root {
+    --navfoot-height-landscape-exlarge-screens: calc(var(--space-xl) * 1.1);
+  }
+
   .navbar,
   footer {
     height: var(--navfoot-height-landscape-exlarge-screens);
@@ -1013,15 +1069,15 @@ footer {
   }
 
   .heading {
-    font-size: var(--step-3);
-  }
-
-  .content-description {
     font-size: var(--step-2);
   }
 
+  .content-description {
+    font-size: var(--step-1);
+  }
+
   .projects-btn {
-    padding: var(--space-l) var(--space-2xl);
+    padding: var(--space-s) var(--space-xl);
     font-size: var(--step-1);
   }
 
@@ -1052,12 +1108,17 @@ footer {
     padding-inline: var(--space-xl);
   }
 
+  main.about-page .avatar-photo {
+    display: inherit;
+    width: var(--space-4xl);
+  }
+
   main.about-page .heading {
-    font-size: var(--step-2);
+    font-size: var(--step-1);
   }
 
   main.about-page .content-description {
-    font-size: var(--step-0);
+    font-size: var(--step--1);
   }
 
   .social-section-container,
@@ -1079,6 +1140,10 @@ footer {
 /* Large Tablet / Desktops Styling */
 
 @media screen and (orientation: landscape) and (min-width: 1280px) {
+  :root {
+    --navfoot-height-landscape-large-screens: var(--space-xl);
+  }
+
   .navbar,
   main,
   footer {
@@ -1112,6 +1177,10 @@ footer {
     padding-inline: var(--space-xl);
   }
 
+  main.about-page .avatar-photo {
+    width: var(--space-6xl);
+  }
+
   main.about-page .heading {
     font-size: var(--step-3);
   }
@@ -1129,8 +1198,43 @@ footer {
   }
 
   main.home-page,
-  main.about-page,
   main.contact-page {
     padding-inline: var(--space-8xl);
+  }
+
+  main.about-page {
+    padding-inline: var(--space-4xl);
+    display: grid;
+    grid-template-rows: 1fr repeat(3, auto) 1fr;
+  }
+
+  main.about-page .avatar-photo {
+    width: 90%;
+    grid-column: 1;
+    grid-row: 1 / span 5;
+  }
+
+  main.about-page .heading,
+  .divider,
+  main.about-page .content-description {
+    grid-column: 2;
+  }
+
+  main.about-page .heading {
+    grid-row: 2;
+    font-size: var(--step-2);
+  }
+
+  .divider-container {
+    grid-row: 3;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  main.about-page .content-description {
+    grid-row: 4;
+    padding-inline: var(--space-xl);
+    font-size: var(--step-0);
   }
 }

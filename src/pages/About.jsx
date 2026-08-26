@@ -11,9 +11,8 @@ function About() {
           <p>
             I'm a frontend developer based out of Miami, FL, USA. I enjoy
             building webpages and applications that solve real-world problems
-            and are easy to use. My specialties include JavaScript and React JS.
+            and are easy to use. My specialties include JavaScript and React.js.
           </p>
-          <br />
           <p>
             My interests and hobbies include cooking and exploring cuisines from
             around the world; I am indeed a "foodie". I also enjoy traveling
@@ -22,7 +21,7 @@ function About() {
             having an open mind in order to embrace new experiences or ways of
             thinking. My biggest passion outside of programming is supporting my
             football/soccer team, which I adore. I'll keep its identity a secret
-            just in case you're not a fan (😂).
+            just in case you're not a fan 😂.
           </p>
         </>
       }
