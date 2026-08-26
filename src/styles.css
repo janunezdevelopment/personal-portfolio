@@ -36,14 +36,21 @@ body,
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Sora";
+  src: url("./assets/fonts/sora/Sora-VariableFont_wght.ttf");
+  font-weight: 100 800;
+  font-style: normal;
+}
+
 /* Font Utility Classes */
+
+.font-sora {
+  font-family: var(--font-sora);
+}
 
 .font-inter {
   font-family: var(--font-inter);
-}
-
-.font-jb {
-  font-family: var(--font-jb);
 }
 
 /* Variables */
@@ -119,8 +126,12 @@ body,
 
   /* Fonts */
 
+  --font-sora: "Sora", sans-serif;
   --font-inter: "Inter Variable", sans-serif;
-  --font-jb: "JetBrains Mono", sans-serif;
+}
+
+body {
+  font-family: var(--font-inter);
 }
 
 /* Body Styling */
@@ -1105,19 +1116,38 @@ footer {
   }
 
   main.about-page {
-    padding-inline: var(--space-xl);
+    display: grid;
+    grid-template-rows: 1fr repeat(3, auto) 1fr;
   }
 
   main.about-page .avatar-photo {
     display: inherit;
-    width: var(--space-4xl);
+    width: 100%;
+    grid-column: 1;
+    grid-row: 1 / span 5;
+  }
+
+  main.about-page .heading,
+  .divider,
+  main.about-page .content-description {
+    grid-column: 2;
   }
 
   main.about-page .heading {
+    grid-row: 2;
     font-size: var(--step-1);
   }
 
+  .divider-container {
+    grid-row: 3;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
   main.about-page .content-description {
+    grid-row: 4;
+    padding-inline: var(--space-l);
     font-size: var(--step--1);
   }
 

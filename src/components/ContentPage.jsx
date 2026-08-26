@@ -1,6 +1,6 @@
 function ContentPage({ title, description, photo, className, children }) {
   return (
-    <main className={`${className} font-jb`}>
+    <main className={`${className} font-inter`}>
       {photo && (
         <img
           src={photo}

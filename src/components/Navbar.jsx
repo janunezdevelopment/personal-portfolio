@@ -37,7 +37,7 @@ function Navbar() {
 
   return (
     <header>
-      <nav className={`navbar font-inter ${isMenuOpen ? "open" : ""}`}>
+      <nav className={`navbar font-sora ${isMenuOpen ? "open" : ""}`}>
         <Link className="avatar-link" to="/">
           <img
             src={avatar}
