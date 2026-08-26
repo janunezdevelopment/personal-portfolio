@@ -302,7 +302,7 @@ footer {
   position: relative;
   display: inline-block;
   font-size: var(--step-0);
-  letter-spacing: var(--space-5xs);
+  letter-spacing: 0.08em;
   color: var(--white);
   text-decoration: none;
   text-transform: uppercase;
@@ -409,7 +409,7 @@ main {
   border-radius: var(--border-radius);
   font-family: inherit;
   font-weight: 650;
-  letter-spacing: var(--space-5xs);
+  letter-spacing: 0.04em;
   color: var(--white);
   text-decoration: none;
   text-transform: uppercase;
@@ -550,9 +550,9 @@ main.projects-page {
   text-align: center;
   justify-content: center;
   line-height: 1;
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   font-weight: 780;
-  letter-spacing: var(--space-5xs);
+  letter-spacing: 0.07em;
   color: var(--white);
   text-decoration-line: underline;
   text-decoration-color: rgb(106 218 255 / 0.92);
@@ -586,10 +586,14 @@ main.projects-page {
     0 2px 4px rgb(12 29 39 / 0.42);
 } */
 
+.project-description,
+.project-link-btn {
+  font-size: var(--step--2);
+}
+
 .project-description {
   grid-row: 3;
   padding-block: var(--space-xs);
-  font-size: var(--step--2);
   font-weight: 400;
   line-height: 1.2;
 }
@@ -604,7 +608,6 @@ main.projects-page {
 
 .project-link-btn {
   padding: var(--space-xs) var(--space-l);
-  font-size: var(--step--2);
   box-shadow:
     0 0 0 1px rgb(12 29 39 / 0.34),
     0 10px 24px rgb(12 29 39 / 0.38),
@@ -771,7 +774,6 @@ footer {
 
   .navlinks {
     font-size: var(--step--1);
-    letter-spacing: var(--space-6xs);
   }
 
   main {
@@ -815,7 +817,7 @@ footer {
     grid-row: 1;
     grid-column: 2;
     font-size: var(--step-0);
-    letter-spacing: var(--space-6xs);
+    letter-spacing: 0.07em;
   }
 
   .project-description {
@@ -983,7 +985,6 @@ footer {
     position: relative;
     display: inline-block;
     font-size: var(--step-1);
-    letter-spacing: var(--space-5xs);
     color: var(--white);
     text-decoration: none;
     text-transform: uppercase;
@@ -1072,7 +1073,6 @@ footer {
 
   .navlinks {
     font-size: calc(var(--step-0) * 1.1);
-    letter-spacing: var(--space-4xs);
   }
 
   main {
@@ -1098,12 +1098,12 @@ footer {
   }
 
   .project-title {
-    font-size: var(--step-2);
-    letter-spacing: var(--space-4xs);
+    font-size: var(--step-1);
   }
 
-  .project-description {
-    font-size: var(--step-0);
+  .project-description,
+  .project-link-btn {
+    font-size: var(--step--1);
   }
 
   .project-links {
@@ -1112,7 +1112,6 @@ footer {
 
   .project-link-btn {
     padding: var(--space-s) var(--space-xl);
-    font-size: var(--step--1);
   }
 
   main.about-page {
@@ -1188,10 +1187,6 @@ footer {
     gap: var(--space-xl);
   }
 
-  .navlinks {
-    letter-spacing: var(--space-3xs);
-  }
-
   main {
     padding-inline: var(--space-5xl);
     gap: var(--space-l);
@@ -1225,6 +1220,15 @@ footer {
 @media screen and (orientation: landscape) and (min-width: 1440px) {
   .project-container {
     max-width: 85%;
+  }
+
+  .project-title {
+    font-size: var(--step-2);
+  }
+
+  .project-description,
+  .project-link-btn {
+    font-size: var(--step-0);
   }
 
   main.home-page,
