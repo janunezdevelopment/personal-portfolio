@@ -515,12 +515,6 @@ main.projects-page {
   scroll-snap-stop: always;
 }
 
-@media screen and (orientation: landscape) {
-  :root {
-    --project-snap-space: var(--project-card-margin-block-landscape);
-  }
-}
-
 .project-screenshots-container {
   grid-row: 1;
   margin: auto;
@@ -542,7 +536,7 @@ main.projects-page {
   flex: 1;
   min-width: 0;
   width: 100%;
-  max-height: 40dvh;
+  max-height: 38dvh;
   padding-block: var(--space-2xs);
   object-fit: contain;
 }
@@ -631,12 +625,27 @@ main.projects-page {
     0 1px 1px rgb(255 255 255 / 0.16) inset;
 }
 
+main.about-page {
+  gap: var(--space-s);
+}
+
+main.about-page .avatar-photo {
+  width: var(--space-4xl);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 3px solid rgb(234 243 246 / 0.82);
+  border-radius: var(--border-radius);
+  box-shadow:
+    0 10px 24px rgb(12 29 39 / 0.42),
+    0 2px 3px rgb(255 255 255 / 0.24) inset;
+}
+
 main.about-page .heading {
-  font-size: var(--step-1);
+  font-size: var(--step-0);
 }
 
 main.about-page .content-description {
-  font-size: var(--step--1);
+  font-size: var(--step--2);
 }
 
 footer {
@@ -689,7 +698,7 @@ footer {
 }
 
 .social-icons {
-  max-height: 90%;
+  max-height: 80%;
   object-fit: contain;
 }
 
@@ -700,6 +709,12 @@ footer {
 }
 
 /* Landscape Phones Styling */
+
+@media screen and (orientation: landscape) {
+  :root {
+    --project-snap-space: var(--project-card-margin-block-landscape);
+  }
+}
 
 @media screen and (orientation: landscape) and (min-width: 640px) {
   .navbar,

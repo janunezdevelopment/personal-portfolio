@@ -1,16 +1,17 @@
 import ContentPage from "../components/ContentPage";
+import avatar from "../assets/imgs/avatar.jpg";
 
 function About() {
   return (
     <ContentPage
+      photo={avatar}
       title="About me"
       description={
         <>
           <p>
             I'm a frontend developer based out of Miami, FL, USA. I enjoy
             building webpages and applications that solve real-world problems
-            and that are fun to use. My specialties include JavaScript, React
-            JS, Tailwind CSS, and Styled Components.
+            and are easy to use. My specialties include JavaScript and React JS.
           </p>
           <br />
           <p>
