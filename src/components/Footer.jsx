@@ -5,7 +5,7 @@ import linkedin from "../assets/imgs/linkedin.svg";
 function Footer() {
   const socialLinks = [
     {
-      href: "https://github.com/username",
+      href: "https://github.com/janunezdevelopment",
       label: "GitHub",
       src: github,
     },
