@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import avatar from "../assets/imgs/avatar.jpg";
 
@@ -11,7 +11,55 @@ const navItems = [
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDesktopNavigation, setIsDesktopNavigation] = useState(
+    () =>
+      window.matchMedia("(orientation: landscape) and (min-width: 640px)")
+        .matches,
+  );
   const [focusedLink, setFocusedLink] = useState(null);
+  const menuButtonRef = useRef(null);
+  const firstMenuLinkRef = useRef(null);
+  const wasMenuOpen = useRef(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(
+      "(orientation: landscape) and (min-width: 640px)",
+    );
+    const handleMediaQueryChange = (event) => {
+      setIsDesktopNavigation(event.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
+
+    return () =>
+      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+  }, []);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      firstMenuLinkRef.current?.focus();
+    } else if (wasMenuOpen.current) {
+      menuButtonRef.current?.focus();
+    }
+
+    wasMenuOpen.current = isMenuOpen;
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return undefined;
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isMenuOpen]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -50,16 +98,23 @@ function Navbar() {
           <span className="avatar-name">Javier A. Núñez</span>
         </Link>
         <button
+          ref={menuButtonRef}
           className={`hamburger ${isMenuOpen ? "open" : ""}`}
           onClick={toggleMenu}
-          aria-label="Toggle navigation"
+          aria-controls="primary-navigation"
+          aria-label={isMenuOpen ? "Close navigation" : "Open navigation"}
           aria-expanded={isMenuOpen}
         >
-          <span className="bars"></span>
-          <span className="bars"></span>
-          <span className="bars"></span>
+          <span className="bars" aria-hidden="true"></span>
+          <span className="bars" aria-hidden="true"></span>
+          <span className="bars" aria-hidden="true"></span>
         </button>
-        <ul className={`navlinks-container ${isMenuOpen ? "open" : ""}`}>
+        <ul
+          id="primary-navigation"
+          className={`navlinks-container ${isMenuOpen ? "open" : ""}`}
+          hidden={!isDesktopNavigation && !isMenuOpen}
+          inert={!isDesktopNavigation && !isMenuOpen}
+        >
           {navItems.map((item) => (
             <li
               key={item.path}
@@ -67,6 +122,7 @@ function Navbar() {
               className="navlink-container"
             >
               <NavLink
+                ref={item.path === "/" ? firstMenuLinkRef : undefined}
                 className={({ isActive }) =>
                   getNavLinkClassName(item.path, isActive)
                 }

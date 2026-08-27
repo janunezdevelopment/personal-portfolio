@@ -137,20 +137,22 @@ body {
 /* Keep the skip link available to keyboard users without affecting layout. */
 .skip-link {
   position: fixed;
-  top: var(--space-4xl);
+  top: var(--space-2xl);
   left: var(--space-xs);
-  z-index: 2;
+  z-index: 10;
   padding: var(--space-2xs) var(--space-xs);
   color: var(--jet-black);
   background: var(--white);
   border-radius: var(--border-radius);
-  transform: translateY(-200%);
+  opacity: 0;
+  transform: translateY(calc(-100% - var(--space-xs)));
 }
 
 .skip-link:focus-visible {
+  opacity: 1;
   transform: translateY(0);
   outline: 3px solid var(--pale-sky);
-  outline-offset: 3px;
+  outline-offset: 4px;
 }
 
 /* Body Styling */
@@ -419,6 +421,18 @@ main {
 .project-link-btn {
   margin: 0;
   font-size: var(--step-0);
+}
+
+main.contact-page .content-description a {
+  color: var(--pale-sky);
+  text-decoration: none;
+}
+
+main.contact-page .content-description a:hover,
+main.contact-page .content-description a:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.2em;
 }
 
 /* Shared button base */
@@ -1290,5 +1304,28 @@ footer {
     grid-row: 4;
     padding-inline: var(--space-xl);
     font-size: var(--step-0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  main.projects-page {
+    scroll-snap-type: none;
+  }
+
+  .project-container {
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
   }
 }

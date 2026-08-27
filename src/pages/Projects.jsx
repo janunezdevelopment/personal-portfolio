@@ -9,6 +9,10 @@ const projects = [
   {
     title: "Quiztopia 3000",
     screenshots: [quizzicalScreenshot1, quizzicalScreenshot2],
+    screenshotAlts: [
+      "Quiztopia 3000 start screen with a difficulty selector and Start Quiz button",
+      "Quiztopia 3000 question screen showing a multiple-choice technology question",
+    ],
     links: [
       {
         href: "https://quiz3000.netlify.app/",
@@ -25,6 +29,10 @@ const projects = [
   {
     title: "Unit Conversion",
     screenshots: [conversionScreenshot1, conversionScreenshot2],
+    screenshotAlts: [
+      "Unit Conversion main screen with an area conversion form",
+      "Unit Conversion saved history screen with filters and saved conversion entries",
+    ],
     links: [
       {
         href: "https://unit-conversion-app-1.netlify.app/",
@@ -41,6 +49,10 @@ const projects = [
   {
     title: "Password Generator",
     screenshots: [passwordGenScreenshot1, passwordGenScreenshot2],
+    screenshotAlts: [
+      "Password Generator screen with a password length control and Generate passwords button",
+      "Password Generator screen showing two generated passwords and a copied-to-clipboard status",
+    ],
     links: [
       {
         href: "https://password-generator-jn.netlify.app/",
@@ -63,7 +75,7 @@ function Projects() {
         {project.screenshots.map((screenshot, index) => (
           <img
             src={screenshot}
-            alt={`Project screenshot ${index + 1}`}
+            alt={project.screenshotAlts[index]}
             key={screenshot}
             className="project-screenshot"
           />
