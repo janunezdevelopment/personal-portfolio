@@ -134,6 +134,25 @@ body {
   font-family: var(--font-inter);
 }
 
+/* Keep the skip link available to keyboard users without affecting layout. */
+.skip-link {
+  position: fixed;
+  top: var(--space-4xl);
+  left: var(--space-xs);
+  z-index: 2;
+  padding: var(--space-2xs) var(--space-xs);
+  color: var(--jet-black);
+  background: var(--white);
+  border-radius: var(--border-radius);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 3px solid var(--pale-sky);
+  outline-offset: 3px;
+}
+
 /* Body Styling */
 
 .app-container {

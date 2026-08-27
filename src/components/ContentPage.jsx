@@ -1,6 +1,6 @@
 function ContentPage({ title, description, photo, className, children }) {
   return (
-    <main className={`${className} font-inter`}>
+    <main id="main-content" tabIndex="-1" className={`${className} font-inter`}>
       {photo && (
         <img
           src={photo}
@@ -8,11 +8,11 @@ function ContentPage({ title, description, photo, className, children }) {
           className="avatar-photo"
         />
       )}
-      <h2 className="heading">{title}</h2>
+      <h1 className="heading">{title}</h1>
       <div className="divider-container">
         <hr className="divider" />
       </div>
-      <p className="content-description">{description}</p>
+      <div className="content-description">{description}</div>
       {children}
     </main>
   );

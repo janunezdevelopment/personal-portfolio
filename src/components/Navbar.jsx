@@ -37,6 +37,9 @@ function Navbar() {
 
   return (
     <header>
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
       <nav className={`navbar font-sora ${isMenuOpen ? "open" : ""}`}>
         <Link className="avatar-link" to="/">
           <img
@@ -44,7 +47,7 @@ function Navbar() {
             alt="Portrait of Javier A. Núñez"
             className="avatar-image"
           />
-          <h1 className="avatar-name">Javier A. Núñez</h1>
+          <span className="avatar-name">Javier A. Núñez</span>
         </Link>
         <button
           className={`hamburger ${isMenuOpen ? "open" : ""}`}

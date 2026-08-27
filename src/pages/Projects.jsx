@@ -82,7 +82,8 @@ function Projects() {
   ));
 
   return (
-    <main className="projects-page font-inter">
+    <main id="main-content" tabIndex="-1" className="projects-page font-inter">
+      <h1 className="heading">Projects</h1>
       <hr className="divider" />
       {projectItems}
     </main>
