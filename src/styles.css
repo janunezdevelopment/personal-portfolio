@@ -74,6 +74,8 @@ body,
   --text-shadow-glow:
     0 1px 2px rgb(255 255 255 / 0.18), 0 2px 6px rgb(12 29 39 / 0.28);
   --text-shadow-hero: 0 2px 5px rgb(12 29 39 / 0.42);
+  --text-shadow-hero-strong:
+    0 2px 5px rgb(12 29 39 / 0.6), 0 4px 14px rgb(12 29 39 / 0.5);
   --skip-link-gap: 1vh;
 
   /* Fluid Type Scale */
@@ -177,7 +179,7 @@ body {
   grid-template-rows: auto 1fr auto;
   width: 100vw;
   background:
-    linear-gradient(rgb(0 0 0 / 0.3), rgb(0 0 0 / 0.3)),
+    linear-gradient(rgb(0 0 0 / 0.48), rgb(0 0 0 / 0.48)),
     url("./assets/imgs/portfolio-background.jpg");
   background-size: cover;
   background-position: center top;
@@ -674,6 +676,12 @@ main.projects-page {
     0 0 0 1px rgb(12 29 39 / 0.3),
     0 6px 16px rgb(12 29 39 / 0.34),
     0 1px 1px rgb(255 255 255 / 0.16) inset;
+}
+
+main.home-page,
+main.about-page,
+main.contact-page {
+  text-shadow: var(--text-shadow-hero-strong);
 }
 
 main.about-page {
