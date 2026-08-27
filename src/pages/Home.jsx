@@ -19,7 +19,7 @@ function Home() {
       }
       className="home-page"
     >
-      <Link className="projects-btn" to="/projects">
+      <Link className="button projects-btn" to="/projects">
         See my projects
       </Link>
     </ContentPage>

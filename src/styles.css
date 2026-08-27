@@ -56,8 +56,7 @@ body,
 /* Variables */
 
 :root {
-  --test-border: 0.0625em solid red;
-
+  
   /* Colors */
 
   --jet-black: #0c1d27;
@@ -127,7 +126,43 @@ body,
 
   --project-card-margin-block: var(--space-xs);
   --project-snap-space: var(--project-card-margin-block);
+
+  /* Button Variables */
+
   --button-padding: 1em 2.5em;
+  --button-background:
+    linear-gradient(135deg, rgb(31 122 140 / 0.9), rgb(2 43 58 / 0.88));
+  --button-background-hover:
+    linear-gradient(135deg, rgb(31 122 140 / 0.98), rgb(2 43 58 / 0.95));
+  --button-transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+  --button-shadow:
+    0 0 0 1px rgb(12 29 39 / 0.34),
+    0 10px 24px rgb(12 29 39 / 0.38),
+    0 2px 2px rgb(255 255 255 / 0.2) inset;
+  --button-shadow-hover:
+    0 0 0 1px rgb(12 29 39 / 0.4),
+    0 14px 30px rgb(12 29 39 / 0.44),
+    0 2px 2px rgb(255 255 255 / 0.24) inset;
+  --button-shadow-active:
+    0 0 0 1px rgb(12 29 39 / 0.3),
+    0 6px 16px rgb(12 29 39 / 0.34),
+    0 1px 1px rgb(255 255 255 / 0.16) inset;
+  --projects-button-shadow:
+    0 0 0 1px rgb(12 29 39 / 0.34),
+    0 14px 34px rgb(12 29 39 / 0.46),
+    0 2px 2px rgb(255 255 255 / 0.2) inset;
+  --projects-button-shadow-hover:
+    0 0 0 1px rgb(12 29 39 / 0.4),
+    0 18px 42px rgb(12 29 39 / 0.52),
+    0 2px 2px rgb(255 255 255 / 0.24) inset;
+  --projects-button-shadow-active:
+    0 0 0 1px rgb(12 29 39 / 0.3),
+    0 8px 20px rgb(12 29 39 / 0.38),
+    0 1px 1px rgb(255 255 255 / 0.16) inset;
 
   /* Fonts */
 
@@ -140,6 +175,7 @@ body {
 }
 
 /* Keep the skip link available to keyboard users without affecting layout. */
+
 .skip-link {
   position: fixed;
   top: var(--current-nav-height);
@@ -414,6 +450,11 @@ main {
   font-size: var(--step-2);
 }
 
+main.home-page .heading,
+main.contact-page .heading {
+  font-weight: 550;
+}
+
 .divider {
   margin: 0;
   width: min(42rem, 78vw);
@@ -452,8 +493,7 @@ main.contact-page .content-description a:focus-visible {
 }
 
 /* Shared button base */
-.projects-btn,
-.project-link-btn {
+.button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -466,44 +506,27 @@ main.contact-page .content-description a:focus-visible {
   color: var(--white);
   text-decoration: none;
   text-transform: uppercase;
-  background: linear-gradient(
-    135deg,
-    rgb(31 122 140 / 0.9),
-    rgb(2 43 58 / 0.88)
-  );
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
+  background: var(--button-background);
+  transition: var(--button-transition);
 }
 
-.projects-btn:link,
-.projects-btn:visited,
-.project-link-btn:link,
-.project-link-btn:visited {
+.button:link,
+.button:visited {
   color: var(--white);
   text-decoration: none;
 }
 
-.projects-btn:hover,
-.project-link-btn:hover {
+.button:hover {
   transform: translateY(1px) translateX(1px);
   border-color: rgb(234 243 246 / 0.72);
-  background: linear-gradient(
-    135deg,
-    rgb(31 122 140 / 0.98),
-    rgb(2 43 58 / 0.95)
-  );
+  background: var(--button-background-hover);
 }
 
-.projects-btn:active,
-.project-link-btn:active {
+.button:active {
   transform: translateY(0);
 }
 
-.projects-btn:focus-visible,
-.project-link-btn:focus-visible {
+.button:focus-visible {
   outline: 0.125em solid var(--pale-sky);
   outline-offset: 0.125em;
 }
@@ -511,24 +534,15 @@ main.contact-page .content-description a:focus-visible {
 /* Button variants */
 
 .projects-btn {
-  box-shadow:
-    0 0 0 1px rgb(12 29 39 / 0.34),
-    0 14px 34px rgb(12 29 39 / 0.46),
-    0 2px 2px rgb(255 255 255 / 0.2) inset;
+  box-shadow: var(--projects-button-shadow);
 }
 
 .projects-btn:hover {
-  box-shadow:
-    0 0 0 1px rgb(12 29 39 / 0.4),
-    0 18px 42px rgb(12 29 39 / 0.52),
-    0 2px 2px rgb(255 255 255 / 0.24) inset;
+  box-shadow: var(--projects-button-shadow-hover);
 }
 
 .projects-btn:active {
-  box-shadow:
-    0 0 0 1px rgb(12 29 39 / 0.3),
-    0 8px 20px rgb(12 29 39 / 0.38),
-    0 1px 1px rgb(255 255 255 / 0.16) inset;
+  box-shadow: var(--projects-button-shadow-active);
 }
 
 main.projects-page {
@@ -572,12 +586,7 @@ main.projects-page {
   width: 100%;
 }
 
-.project-screenshots-container,
-.project-description,
-.project-links,
-.social-section-container,
-.social-links-container,
-.social-links-container a {
+.flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -614,29 +623,6 @@ main.projects-page {
     0 0 14px rgb(134 191 206 / 0.24);
 }
 
-/* .project-title::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0em;
-  width: calc(100% - var(--space-s));
-  height: var(--space-4xs);
-  transform: translateX(-50%);
-  border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    rgb(134 191 206 / 0),
-    rgb(106 218 255 / 0.98) 22%,
-    rgb(58 173 223 / 1) 50%,
-    rgb(106 218 255 / 0.98) 78%,
-    rgb(134 191 206 / 0)
-  );
-  box-shadow:
-    0 0 10px rgb(106 218 255 / 0.7),
-    0 0 22px rgb(46 143 255 / 0.5),
-    0 2px 4px rgb(12 29 39 / 0.42);
-} */
-
 .project-description,
 .project-link-btn {
   font-size: var(--step--2);
@@ -658,29 +644,18 @@ main.projects-page {
 }
 
 .project-link-btn {
-  box-shadow:
-    0 0 0 1px rgb(12 29 39 / 0.34),
-    0 10px 24px rgb(12 29 39 / 0.38),
-    0 2px 2px rgb(255 255 255 / 0.2) inset;
+  box-shadow: var(--button-shadow);
 }
 
 .project-link-btn:hover {
-  box-shadow:
-    0 0 0 1px rgb(12 29 39 / 0.4),
-    0 14px 30px rgb(12 29 39 / 0.44),
-    0 2px 2px rgb(255 255 255 / 0.24) inset;
+  box-shadow: var(--button-shadow-hover);
 }
 
 .project-link-btn:active {
-  box-shadow:
-    0 0 0 1px rgb(12 29 39 / 0.3),
-    0 6px 16px rgb(12 29 39 / 0.34),
-    0 1px 1px rgb(255 255 255 / 0.16) inset;
+  box-shadow: var(--button-shadow-active);
 }
 
-main.home-page,
-main.about-page,
-main.contact-page {
+main:is(.home-page, .about-page, .contact-page) {
   text-shadow: var(--text-shadow-hero-strong);
 }
 
@@ -728,6 +703,7 @@ footer {
 .socials-heading {
   position: relative;
   font-size: var(--step-2);
+  font-weight: 500;
   margin: 0;
 }
 

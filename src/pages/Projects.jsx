@@ -71,7 +71,7 @@ const projects = [
 function Projects() {
   const projectItems = projects.map((project) => (
     <section className="project-container" key={project.title}>
-      <div className="project-screenshots-container">
+      <div className="project-screenshots-container flex-center">
         {project.screenshots.map((screenshot, index) => (
           <img
             src={screenshot}
@@ -82,10 +82,10 @@ function Projects() {
         ))}
       </div>
       <h2 className="project-title font-inter">{project.title}</h2>
-      <p className="project-description">{project.description}</p>
-      <div className="project-links">
+      <p className="project-description flex-center">{project.description}</p>
+      <div className="project-links flex-center">
         {project.links.map((link) => (
-          <a className="project-link-btn" href={link.href} key={link.label}>
+          <a className="button project-link-btn" href={link.href} key={link.label}>
             {link.label}
           </a>
         ))}

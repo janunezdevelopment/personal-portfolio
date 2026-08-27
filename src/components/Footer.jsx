@@ -34,17 +34,17 @@ function Footer() {
 
   return (
     <footer>
-      <div className="social-section-container">
+      <div className="social-section-container flex-center">
         <h3 className="socials-heading">Socials</h3>
         <nav aria-label="Social media">
-          <ul className="social-links-container">
+          <ul className="social-links-container flex-center">
             {socialLinks.map((link) => (
               <li key={link.label}>
                 <a
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-links"
+                  className="social-links flex-center"
                 >
                   <img
                     src={link.src}
