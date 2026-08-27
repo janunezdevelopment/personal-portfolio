@@ -56,7 +56,7 @@ body,
 /* Variables */
 
 :root {
-  --test-border: 1px solid red;
+  --test-border: 0.0625em solid red;
 
   /* Colors */
 
@@ -74,6 +74,7 @@ body,
   --text-shadow-glow:
     0 1px 2px rgb(255 255 255 / 0.18), 0 2px 6px rgb(12 29 39 / 0.28);
   --text-shadow-hero: 0 2px 5px rgb(12 29 39 / 0.42);
+  --skip-link-gap: 1vh;
 
   /* Fluid Type Scale */
 
@@ -113,6 +114,7 @@ body,
   /* Navbar and Footer Variables */
 
   --navfoot-height-portrait: var(--space-xl);
+  --current-nav-height: var(--navfoot-height-portrait);
   --bar-height: var(--space-3xs);
   --hamburger-gap: calc(var(--space-3xs) * 1.5);
   --translate-distance: calc(var(--bar-height) + var(--hamburger-gap));
@@ -123,6 +125,7 @@ body,
 
   --project-card-margin-block: var(--space-xs);
   --project-snap-space: var(--project-card-margin-block);
+  --button-padding: 1em 2.5em;
 
   /* Fonts */
 
@@ -137,22 +140,33 @@ body {
 /* Keep the skip link available to keyboard users without affecting layout. */
 .skip-link {
   position: fixed;
-  top: var(--space-2xl);
+  top: var(--current-nav-height);
   left: var(--space-xs);
   z-index: 10;
   padding: var(--space-2xs) var(--space-xs);
+  font-size: var(--step-0);
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
   color: var(--jet-black);
   background: var(--white);
   border-radius: var(--border-radius);
   opacity: 0;
-  transform: translateY(calc(-100% - var(--space-xs)));
+  pointer-events: none;
+  transform: translateY(-100%);
 }
 
 .skip-link:focus-visible {
   opacity: 1;
-  transform: translateY(0);
-  outline: 3px solid var(--pale-sky);
-  outline-offset: 4px;
+  pointer-events: auto;
+  transform: translateY(calc(var(--skip-link-gap) + 0.125em + 0.125em));
+  outline: 0.125em solid var(--pale-sky);
+  outline-offset: 0.125em;
+}
+
+.skip-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
 /* Body Styling */
@@ -441,7 +455,9 @@ main.contact-page .content-description a:focus-visible {
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  padding: var(--button-padding);
   border-radius: var(--border-radius);
+  border: 0.0625em solid transparent;
   font-family: inherit;
   font-weight: 650;
   letter-spacing: 0.04em;
@@ -486,14 +502,13 @@ main.contact-page .content-description a:focus-visible {
 
 .projects-btn:focus-visible,
 .project-link-btn:focus-visible {
-  outline: 2px solid var(--pale-sky);
-  outline-offset: 2px;
+  outline: 0.125em solid var(--pale-sky);
+  outline-offset: 0.125em;
 }
 
 /* Button variants */
 
 .projects-btn {
-  padding: var(--space-s) var(--space-m);
   box-shadow:
     0 0 0 1px rgb(12 29 39 / 0.34),
     0 14px 34px rgb(12 29 39 / 0.46),
@@ -530,7 +545,7 @@ main.projects-page {
   padding: var(--space-xs);
   display: grid;
   grid-template-rows: repeat(4, auto);
-  border: 1px solid rgb(234 243 246 / 0.24);
+  border: 0.0625em solid rgb(234 243 246 / 0.24);
   border-radius: calc(var(--border-radius) * 1.8);
   background: linear-gradient(
     150deg,
@@ -641,7 +656,6 @@ main.projects-page {
 }
 
 .project-link-btn {
-  padding: var(--space-xs) var(--space-l);
   box-shadow:
     0 0 0 1px rgb(12 29 39 / 0.34),
     0 10px 24px rgb(12 29 39 / 0.38),
@@ -670,7 +684,7 @@ main.about-page .avatar-photo {
   width: var(--space-4xl);
   aspect-ratio: 1;
   object-fit: cover;
-  border: 3px solid rgb(234 243 246 / 0.82);
+  border: 0.1875em solid rgb(234 243 246 / 0.82);
   border-radius: var(--border-radius);
   box-shadow:
     0 10px 24px rgb(12 29 39 / 0.42),
@@ -757,11 +771,17 @@ footer {
 @media screen and (orientation: landscape) and (min-width: 640px) {
   :root {
     --navfoot-height-landscape: var(--space-l);
+    --current-nav-height: var(--navfoot-height-landscape);
   }
 
   .navbar,
   footer {
     height: var(--navfoot-height-landscape);
+  }
+
+  .skip-link {
+    padding: var(--space-3xs) var(--space-s);
+    font-size: var(--step--1);
   }
 
   .avatar-link,
@@ -824,10 +844,6 @@ footer {
     font-size: var(--step--2);
   }
 
-  .projects-btn {
-    padding: var(--space-xs) var(--space-m);
-  }
-
   main.projects-page {
     padding-inline: var(--space-xs);
   }
@@ -868,7 +884,6 @@ footer {
   }
 
   .project-link-btn {
-    padding: var(--space-2xs) var(--space-m);
     font-size: var(--step--3);
   }
 
@@ -903,6 +918,7 @@ footer {
 @media screen and (orientation: portrait) and (min-width: 768px) {
   :root {
     --navfoot-height-portrait-large-screens: var(--space-2xl);
+    --current-nav-height: var(--navfoot-height-portrait-large-screens);
     --bar-height-large-screens: var(--space-2xs);
     --hamburger-gap-large-screens: var(--space-2xs);
     --translate-distance-large-screens: calc(
@@ -913,6 +929,11 @@ footer {
   .navbar,
   footer {
     height: var(--navfoot-height-portrait-large-screens);
+  }
+
+  .skip-link {
+    padding: var(--space-xs) var(--space-m);
+    font-size: var(--step-0);
   }
 
   .avatar-link,
@@ -1043,8 +1064,7 @@ footer {
   }
 
   .projects-btn {
-    padding: var(--space-m) var(--space-xl);
-    font-size: var(--step-3);
+    font-size: var(--step-2);
   }
 
   .project-title {
@@ -1056,7 +1076,6 @@ footer {
   }
 
   .project-link-btn {
-    padding: var(--space-s) var(--space-xl);
     font-size: var(--step-0);
   }
 
@@ -1083,11 +1102,17 @@ footer {
 @media screen and (orientation: landscape) and (min-width: 1024px) {
   :root {
     --navfoot-height-landscape-exlarge-screens: calc(var(--space-xl) * 1.1);
+    --current-nav-height: var(--navfoot-height-landscape-exlarge-screens);
   }
 
   .navbar,
   footer {
     height: var(--navfoot-height-landscape-exlarge-screens);
+  }
+
+  .skip-link {
+    padding: var(--space-xs) var(--space-l);
+    font-size: var(--step-0);
   }
 
   .avatar-link,
@@ -1122,7 +1147,6 @@ footer {
   }
 
   .projects-btn {
-    padding: var(--space-s) var(--space-xl);
     font-size: var(--step-1);
   }
 
@@ -1142,10 +1166,6 @@ footer {
 
   .project-links {
     gap: var(--space-s);
-  }
-
-  .project-link-btn {
-    padding: var(--space-s) var(--space-xl);
   }
 
   main.about-page {

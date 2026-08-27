@@ -36,7 +36,7 @@ function Footer() {
     <footer>
       <div className="social-section-container">
         <h3 className="socials-heading">Socials</h3>
-        <nav>
+        <nav aria-label="Social media">
           <ul className="social-links-container">
             {socialLinks.map((link) => (
               <li key={link.label}>
