@@ -56,7 +56,6 @@ body,
 /* Variables */
 
 :root {
-  
   /* Colors */
 
   --jet-black: #0c1d27;
@@ -76,6 +75,8 @@ body,
   --text-shadow-hero-strong:
     0 2px 5px rgb(12 29 39 / 0.6), 0 4px 14px rgb(12 29 39 / 0.5);
   --skip-link-gap: 1vh;
+  --focus-outline-offset: 0.125em;
+  --focus-outline: 0.125em solid var(--pale-sky);
 
   /* Fluid Type Scale */
 
@@ -130,38 +131,36 @@ body,
   /* Button Variables */
 
   --button-padding: 1em 2.5em;
-  --button-background:
-    linear-gradient(135deg, rgb(31 122 140 / 0.9), rgb(2 43 58 / 0.88));
-  --button-background-hover:
-    linear-gradient(135deg, rgb(31 122 140 / 0.98), rgb(2 43 58 / 0.95));
+  --button-background: linear-gradient(
+    135deg,
+    rgb(31 122 140 / 0.9),
+    rgb(2 43 58 / 0.88)
+  );
+  --button-background-hover: linear-gradient(
+    135deg,
+    rgb(31 122 140 / 0.98),
+    rgb(2 43 58 / 0.95)
+  );
   --button-transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
+    transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease,
     background 0.2s ease;
   --button-shadow:
-    0 0 0 1px rgb(12 29 39 / 0.34),
-    0 10px 24px rgb(12 29 39 / 0.38),
+    0 0 0 1px rgb(12 29 39 / 0.34), 0 10px 24px rgb(12 29 39 / 0.38),
     0 2px 2px rgb(255 255 255 / 0.2) inset;
   --button-shadow-hover:
-    0 0 0 1px rgb(12 29 39 / 0.4),
-    0 14px 30px rgb(12 29 39 / 0.44),
+    0 0 0 1px rgb(12 29 39 / 0.4), 0 14px 30px rgb(12 29 39 / 0.44),
     0 2px 2px rgb(255 255 255 / 0.24) inset;
   --button-shadow-active:
-    0 0 0 1px rgb(12 29 39 / 0.3),
-    0 6px 16px rgb(12 29 39 / 0.34),
+    0 0 0 1px rgb(12 29 39 / 0.3), 0 6px 16px rgb(12 29 39 / 0.34),
     0 1px 1px rgb(255 255 255 / 0.16) inset;
   --projects-button-shadow:
-    0 0 0 1px rgb(12 29 39 / 0.34),
-    0 14px 34px rgb(12 29 39 / 0.46),
+    0 0 0 1px rgb(12 29 39 / 0.34), 0 14px 34px rgb(12 29 39 / 0.46),
     0 2px 2px rgb(255 255 255 / 0.2) inset;
   --projects-button-shadow-hover:
-    0 0 0 1px rgb(12 29 39 / 0.4),
-    0 18px 42px rgb(12 29 39 / 0.52),
+    0 0 0 1px rgb(12 29 39 / 0.4), 0 18px 42px rgb(12 29 39 / 0.52),
     0 2px 2px rgb(255 255 255 / 0.24) inset;
   --projects-button-shadow-active:
-    0 0 0 1px rgb(12 29 39 / 0.3),
-    0 8px 20px rgb(12 29 39 / 0.38),
+    0 0 0 1px rgb(12 29 39 / 0.3), 0 8px 20px rgb(12 29 39 / 0.38),
     0 1px 1px rgb(255 255 255 / 0.16) inset;
 
   /* Fonts */
@@ -198,8 +197,8 @@ body {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(calc(var(--skip-link-gap) + 0.125em + 0.125em));
-  outline: 0.125em solid var(--pale-sky);
-  outline-offset: 0.125em;
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
 }
 
 .skip-link:hover {
@@ -257,6 +256,28 @@ footer {
   text-decoration: none;
 }
 
+.avatar-link:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+.avatar-link:hover,
+.avatar-link:focus {
+  cursor: pointer;
+}
+
+.avatar-link:hover .avatar-name,
+.avatar-link:focus .avatar-name {
+  color: var(--pale-sky);
+  font-weight: 600;
+}
+
+.avatar-link:hover .avatar-name::after,
+.avatar-link:focus-visible .avatar-name::after,
+.avatar-link:active .avatar-name::after {
+  transform: scaleX(1);
+}
+
 .avatar-image {
   max-width: 11vw;
   object-fit: cover;
@@ -267,11 +288,26 @@ footer {
 }
 
 .avatar-name {
+  position: relative;
+  display: inline-block;
   font-size: var(--step-0);
   font-weight: 500;
   color: var(--white);
   text-shadow: var(--text-shadow-glow);
   text-transform: uppercase;
+}
+
+.avatar-name::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.15em;
+  width: 100%;
+  height: var(--space-4xs);
+  background-color: var(--pale-sky);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
 }
 
 .hamburger {
@@ -401,8 +437,8 @@ footer {
 .navlinks:focus-visible {
   color: var(--white);
   background-color: rgb(134 191 206 / 0.24);
-  outline: none;
-  -webkit-text-stroke: 0;
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
 }
 
 .navlinks:hover,
@@ -433,7 +469,6 @@ footer {
 main {
   grid-row: 2;
   height: 100%;
-  max-height: var(--main-height-portrait);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -492,6 +527,11 @@ main.contact-page .content-description a:focus-visible {
   text-underline-offset: 0.2em;
 }
 
+main.contact-page .content-description a:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
 /* Shared button base */
 .button {
   display: inline-flex;
@@ -527,8 +567,8 @@ main.contact-page .content-description a:focus-visible {
 }
 
 .button:focus-visible {
-  outline: 0.125em solid var(--pale-sky);
-  outline-offset: 0.125em;
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
 }
 
 /* Button variants */
@@ -552,6 +592,39 @@ main.projects-page {
   scroll-snap-type: y mandatory;
   scroll-padding-block: 0;
   overscroll-behavior-y: contain;
+}
+
+.project-navigation-hint {
+  position: fixed;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  max-width: calc(100vw - (var(--space-s) * 2));
+  margin: 0;
+  padding: 0.75em 2.5em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-s);
+  font-size: var(--step-1);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: var(--pale-sky);
+  background: rgb(12 29 39 / 0.78);
+  border: 0.0625em solid rgb(234 243 246 / 0.28);
+  border-radius: var(--border-radius);
+  text-shadow: var(--text-shadow-glow);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: project-navigation-hint-fade 4s ease forwards;
+}
+
+.scroll-indicator {
+  display: inline-block;
+  font-size: var(--step-4);
+  line-height: 1;
+  animation: project-navigation-nudge 1.4s ease-in-out infinite;
 }
 
 .project-container {
@@ -730,6 +803,11 @@ footer {
 
 .social-links {
   height: var(--navfoot-height-portrait);
+}
+
+.social-links:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
 }
 
 .social-icons {
@@ -912,6 +990,7 @@ footer {
 
   .navbar,
   footer {
+    padding: var(--space-m);
     height: var(--navfoot-height-portrait-large-screens);
   }
 
@@ -1134,6 +1213,12 @@ footer {
     font-size: var(--step-1);
   }
 
+  .project-navigation-hint {
+    max-width: calc(100vw - (var(--space-s) * 2));
+    gap: var(--space-s);
+    font-size: var(--step-1);
+  }
+
   .project-container {
     grid-template-columns: 1.7fr 2fr;
     grid-template-rows: repeat(3, auto);
@@ -1228,12 +1313,13 @@ footer {
   main {
     padding-inline: var(--space-5xl);
     gap: var(--space-l);
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    overflow: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    overflow: auto;
+  }
+
+  main::-webkit-scrollbar {
+    display: none;
   }
 
   .project-description {
@@ -1311,6 +1397,24 @@ footer {
   }
 }
 
+@keyframes project-navigation-nudge {
+  50% {
+    transform: translateY(0.25em);
+  }
+}
+
+@keyframes project-navigation-hint-fade {
+  0%,
+  65% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1331,5 +1435,9 @@ footer {
   .project-container {
     scroll-snap-align: none;
     scroll-snap-stop: normal;
+  }
+
+  .project-navigation-hint {
+    animation: none;
   }
 }

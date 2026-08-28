@@ -16,7 +16,6 @@ function Navbar() {
       window.matchMedia("(orientation: landscape) and (min-width: 640px)")
         .matches,
   );
-  const [focusedLink, setFocusedLink] = useState(null);
   const menuButtonRef = useRef(null);
   const firstMenuLinkRef = useRef(null);
   const wasMenuOpen = useRef(false);
@@ -65,20 +64,6 @@ function Navbar() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const getNavLinkClassName = (path, isActive) => {
-    const classes = ["navlinks"];
-
-    if (isActive) {
-      classes.push("active");
-    }
-
-    if (focusedLink === path) {
-      classes.push("outlined-text");
-    }
-
-    return classes.join(" ");
-  };
-
   const handleLinkClick = () => {
     setIsMenuOpen(false);
   };
@@ -124,12 +109,10 @@ function Navbar() {
               <NavLink
                 ref={item.path === "/" ? firstMenuLinkRef : undefined}
                 className={({ isActive }) =>
-                  getNavLinkClassName(item.path, isActive)
+                  `navlinks ${isActive ? "active" : ""}`.trim()
                 }
                 to={item.path}
                 end={item.end}
-                onFocus={() => setFocusedLink(item.path)}
-                onBlur={() => setFocusedLink(null)}
                 onClick={handleLinkClick}
               >
                 {item.label}

@@ -85,7 +85,11 @@ function Projects() {
       <p className="project-description flex-center">{project.description}</p>
       <div className="project-links flex-center">
         {project.links.map((link) => (
-          <a className="button project-link-btn" href={link.href} key={link.label}>
+          <a
+            className="button project-link-btn"
+            href={link.href}
+            key={link.label}
+          >
             {link.label}
           </a>
         ))}
@@ -97,6 +101,12 @@ function Projects() {
     <main id="main-content" tabIndex="-1" className="projects-page font-inter">
       <h1 className="heading">Projects</h1>
       <hr className="divider" />
+      <p className="project-navigation-hint">
+        Scroll for more projects
+        <span className="scroll-indicator" aria-hidden="true">
+          ↓
+        </span>
+      </p>
       {projectItems}
     </main>
   );
